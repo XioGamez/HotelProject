@@ -4,7 +4,7 @@ public class Guest {
     private String email;
     private String roomType;
 
-    public void Guest(String s1, int num, String s2) {
+    public Guest(String s1, int num, String s2) {
         this.name = s1;
         this.partySize = num;
         this.email = s2;
