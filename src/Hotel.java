@@ -10,20 +10,29 @@ public class Hotel {
     Connection con;
 
     public Hotel() {
+        connect();
+    }
+
+    public void connect() {
         try {
-            con = DriverManager.getConnection("jdbc:sqlite:hotel.db");
-            PreparedStatement pragma = con.prepareStatement("PRAGMA foreign_keys = ON;");
-            pragma.execute();
-            System.out.println("con.isValid(0) = " + con.isValid(0));
+        con = DriverManager.getConnection("jdbc:sqlite:hotel.db");
+        PreparedStatement pragma = con.prepareStatement("PRAGMA foreign_keys = ON;");
+        pragma.execute();
+        System.out.println("Connected to database");
         }
+        
         catch(SQLException e) {
-            System.out.println("You fucked up somewhere");
+            System.out.println("Connection failed: " + e.getMessage());
         }
     }
 
     public void addReservation(Guest guest) throws SQLException {
         
         try {
+            if (con == null || con.isClosed()) {
+                connect();
+            }
+
             PreparedStatement prst = con.prepareStatement("SELECT name FROM Guest WHERE name = ?");
             prst.setString(1, guest.getName());
             ResultSet rs = prst.executeQuery();
@@ -35,22 +44,21 @@ public class Hotel {
                 prst.setInt(3,guest.getPartySize());
                 prst.executeUpdate();
 
-                prst = con.prepareStatement("INSERT INTO " + guest.getRoomType() + "(room_num,occupied,guest_id) VALUES(?,?,?)");
-                prst.setInt(1,1);
-                prst.setBoolean(2,true);
-                prst.setString(3,guest.getEmail());
+                prst = con.prepareStatement("UPDATE " + guest.getRoomType() + " SET occupied = ?, guest_id = ? " + "WHERE room_num = (SELECT room_num FROM " + guest.getRoomType() + " WHERE room_num BETWEEN 1 AND 10 AND occupied IS NULL AND guest_id IS NULL " +"LIMIT 1)");
+                prst.setBoolean(1,true);
+                prst.setString(2,guest.getEmail());
                 prst.executeUpdate();
             }
             
             else {
-                prst = con.prepareStatement("INSERT INTO " + guest.getRoomType() + "(room_num,occupied,guest_id) VALUES(?,?,?)");
-                prst.setInt(1,1);
-                prst.setBoolean(2,true);
-                prst.setString(3,guest.getEmail());
+                prst = con.prepareStatement("UPDATE " + guest.getRoomType() + " SET occupied = ?, guest_id = ? " + "WHERE room_num = (SELECT room_num FROM " + guest.getRoomType() + " WHERE room_num BETWEEN 1 AND 10 AND occupied IS NULL AND guest_id IS NULL " +"LIMIT 1)");
+                prst.setBoolean(1,true);
+                prst.setString(2,guest.getEmail());
                 prst.executeUpdate();
 
             }      
             System.out.println("A room has been reserved for you");
+            con.close();
           
         }
         catch(SQLException e) {

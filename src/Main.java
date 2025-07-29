@@ -7,10 +7,6 @@ import javafx.stage.Stage;
 public class Main extends Application {
     public static void main(String[] args) throws Exception {
         //launch(args);
-        Hotel hotel = new Hotel();
-        Guest guest = new Guest("Kyle",1,"kyletruong2000@gmail.com");
-        guest.setRoomType("Standard");
-        hotel.addReservation(guest);
     }
 
     @Override
