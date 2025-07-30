@@ -3,6 +3,7 @@ public class Guest {
     private int partySize;
     private String email;
     private String roomType;
+    private Payment payment;
 
     public Guest(String s1, int num, String s2) {
         this.name = s1;
