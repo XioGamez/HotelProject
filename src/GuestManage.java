@@ -25,16 +25,26 @@ public class GuestManage {
         }
     }
 
-    public void addLogin(Login log, Guest guest) throws SQLException {
+    public void signUp(Login log, Guest guest) throws SQLException {
         try {
             if (con == null || con.isClosed()) {
                 connect();
             }
-            PreparedStatement prst = con.prepareStatement("INSERT INTO login(username,user_id,password-hash) VALUES(?,?,?)");
-            prst.setString(1, log.getUsername());
-            prst.setString(2, guest.getEmail());
-            prst.setInt(3,log.getHashcode());
-            prst.executeUpdate();
+
+            PreparedStatement prst = con.prepareStatement("SELECT FROM login WHERE user_id = ?");
+            prst.setString(1,guest.getEmail());
+            ResultSet rs = prst.executeQuery();
+            if(!rs.next()) {
+
+                prst = con.prepareStatement("INSERT INTO login(username,user_id,password-hash) VALUES(?,?,?)");
+                prst.setString(1, log.getUsername());
+                prst.setString(2, guest.getEmail());
+                prst.setInt(3,log.getHashcode());
+                prst.executeUpdate();
+            }
+            else {
+                System.out.println("You are already a member");
+            }
         }
         catch(SQLException e) {
             System.out.println(e.getMessage());
@@ -43,7 +53,7 @@ public class GuestManage {
         con.close();
     }
 
-    public Boolean authLogin(Login log) throws SQLException {
+    public Boolean login(Login log) throws SQLException {
         try {
             if (con == null || con.isClosed()) {
                 connect();
