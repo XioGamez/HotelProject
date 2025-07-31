@@ -25,7 +25,7 @@ public class GuestManage {
         }
     }
 
-    public void addLogin(Login log, Guest guest) {
+    public void addLogin(Login log, Guest guest) throws SQLException {
         try {
             if (con == null || con.isClosed()) {
                 connect();
@@ -40,9 +40,10 @@ public class GuestManage {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
+        con.close();
     }
 
-    public Boolean authLogin(Login log) {
+    public Boolean authLogin(Login log) throws SQLException {
         try {
             if (con == null || con.isClosed()) {
                 connect();
@@ -67,7 +68,7 @@ public class GuestManage {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
-
+        con.close();
         return false;
     }
     
