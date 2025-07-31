@@ -1,5 +1,4 @@
 import java.io.IOException;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -7,12 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Scene0Controller {
-    
+public class SignupController {
+
     private Stage stage;
     private Scene scene;
 
-    public void switchToScene1(ActionEvent event) {
+    public void goToScene1(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("Scene1.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -23,5 +22,4 @@ public class Scene0Controller {
             e.printStackTrace();
         }
     }
-
 }
