@@ -31,7 +31,7 @@ public class GuestManage {
                 connect();
             }
 
-            PreparedStatement prst = con.prepareStatement("SELECT FROM login WHERE user_id = ?");
+            PreparedStatement prst = con.prepareStatement("SELECT user_id FROM login WHERE user_id = ?");
             prst.setString(1,guest.getEmail());
             ResultSet rs = prst.executeQuery();
             if(!rs.next()) {
@@ -58,18 +58,21 @@ public class GuestManage {
             if (con == null || con.isClosed()) {
                 connect();
             }
-            PreparedStatement prst = con.prepareStatement("SELECT FROM login WHERE username = ?");
+            PreparedStatement prst = con.prepareStatement("SELECT username, password-hash FROM login WHERE username = ?");
             prst.setString(1,log.getUsername());
             ResultSet rs = prst.executeQuery();
 
             if(!rs.next()) {
+                con.close();
                 return false;
             }
             else {
                 if(rs.getInt(3) != log.getHashcode()) {
+                    con.close();
                     return false;
                 }
                 else {
+                    con.close();
                     return true;
                 }
             }
@@ -78,7 +81,6 @@ public class GuestManage {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
-        con.close();
         return false;
     }
     
