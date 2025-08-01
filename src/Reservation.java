@@ -6,30 +6,27 @@ import java.sql.SQLException;
 import java.sql.Connection;
 
 public class Reservation {
-    Connection con;
 
-    public Reservation() {
-        connect();
-    }
-
-     public void connect() {
+     public Connection connect() {
         try {
-        con = DriverManager.getConnection("jdbc:sqlite:hotel.db");
+        Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db");
         PreparedStatement pragma = con.prepareStatement("PRAGMA foreign_keys = ON;");
         pragma.execute();
         System.out.println("Connected to database");
+        return con;
         }
         
         catch(SQLException e) {
             System.out.println("Connection failed: " + e.getMessage());
         }
+        return null;
     }
 
-    public void addReservation(Guest guest) throws SQLException {
+    public void addReservation(Guest guest, Connection con) throws SQLException {
         
         try {
             if (con == null || con.isClosed()) {
-                connect();
+                con = connect();
             }
 
             PreparedStatement prst = con.prepareStatement("SELECT name FROM Guest WHERE name = ?");
@@ -57,7 +54,8 @@ public class Reservation {
 
             }      
             System.out.println("A room has been reserved for you");
-            con.close();
+            rs.close();
+            prst.close();
           
         }
         catch(SQLException e) {

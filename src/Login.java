@@ -1,6 +1,6 @@
 public class Login {
-    String username;
-    String password;
+    private String username;
+    private String password;
     int hash;
 
     public void setUsername(String u) {
@@ -14,4 +14,13 @@ public class Login {
     public int getHashcode() {
         return this.password.hashCode();
     }
+
+    public String getUsername() {
+        return this.username;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
 }
