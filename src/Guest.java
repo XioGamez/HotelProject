@@ -5,10 +5,13 @@ public class Guest {
     private String roomType;
     private Payment payment;
 
-    public Guest(String s1, int num, String s2) {
-        this.name = s1;
+    public Guest() {      
+    }
+
+    public Guest(String s1, String s2, int num) {
+        this.email = s1;
         this.partySize = num;
-        this.email = s2;
+        this.name = s2;
     }
 
     public String getName() {
