@@ -14,11 +14,11 @@
             <Image url="@resources/images/beachflowers.jpeg" />
          </image>
       </ImageView>
-      <Button fx:id="loginMainButton" layoutX="340.0" layoutY="245.0" mnemonicParsing="false" onAction="#loginMainButton" style="-fx-background-color: PINK;" text="Login">
+      <Button fx:id="loginMainButton" layoutX="340.0" layoutY="245.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: PINK;" text="Login">
          <font>
             <Font name="Comic Sans MS Bold" size="13.0" />
          </font></Button>
-      <Button fx:id="signupMainButton" layoutX="410.0" layoutY="245.0" mnemonicParsing="false" onAction="#signupMainButton" style="-fx-background-color: PINK;" text="Sign Up">
+      <Button fx:id="signupMainButton" layoutX="410.0" layoutY="245.0" mnemonicParsing="false" onAction="#signUp" style="-fx-background-color: PINK;" text="Sign Up">
          <font>
             <Font name="Comic Sans MS Bold" size="13.0" />
          </font></Button>
