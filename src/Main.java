@@ -6,12 +6,12 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     public static void main(String[] args) throws Exception {
-        //launch(args);
+        launch(args);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Scene0.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
 

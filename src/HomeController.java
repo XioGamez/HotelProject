@@ -15,12 +15,12 @@ public class HomeController {
 
     @FXML
     private void loginMainButton(ActionEvent event) {
-        switchScene(event, "Scene1.fxml");
+        switchScene(event, "login.fxml");
     }
 
     @FXML
     private void signupMainButton(ActionEvent event) {
-        switchScene(event, "Scene2.fxml");
+        switchScene(event, "signup.fxml");
     }
 
     public void switchScene(ActionEvent event, String fxmlFile) {

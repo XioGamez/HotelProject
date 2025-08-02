@@ -11,9 +11,9 @@ public class SignupController {
     private Stage stage;
     private Scene scene;
 
-    public void goToScene1(ActionEvent event) {
+    public void goToSignup(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("Scene1.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("signup.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
