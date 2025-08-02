@@ -6,7 +6,8 @@ import java.sql.SQLException;
 import java.sql.Connection;
 
 public class Reservation {
-
+    
+    Connection con;
      public Connection connect() {
         try {
         Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db");
@@ -22,7 +23,7 @@ public class Reservation {
         return null;
     }
 
-    public void addReservation(Guest guest, Connection con) throws SQLException {
+    public void addReservation(Guest guest) throws SQLException {
         
         try {
             if (con == null || con.isClosed()) {
