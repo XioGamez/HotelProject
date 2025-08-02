@@ -13,26 +13,21 @@ public class HomeController {
     private Stage stage;
     private Scene scene;
 
-    @FXML
-    private void loginMainButton(ActionEvent event) {
-        switchScene(event, "login.fxml");
-    }
-
-    @FXML
-    private void signupMainButton(ActionEvent event) {
-        switchScene(event, "signup.fxml");
-    }
-
-    public void switchScene(ActionEvent event, String fxmlFile) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
+    public void login(ActionEvent event) throws IOException {
+            
+            Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+        
         }
-    }
+    public void signUp(ActionEvent event) throws IOException {
 
+            Parent root = FXMLLoader.load(getClass().getResource("signup.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+    }
 }

@@ -5,7 +5,9 @@ public class Guest {
     private String roomType;
     private Payment payment;
 
-    public Guest() {      
+    public Guest(String s1, String u1) {
+        this.name = s1;
+        this.email = u1;
     }
 
     public Guest(String s1, String s2, int num) {

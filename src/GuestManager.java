@@ -5,11 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class GuestManager {
-    
-    Connection con;
-
-    public GuestManager() {
-    }
 
     public void signUp(Login log, Guest guest) throws SQLException {
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {

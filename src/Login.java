@@ -7,7 +7,12 @@ import java.sql.SQLException;
 public class Login {
     private String username;
     private String password;
-    int hash;
+    private int hash;
+
+    public Login(String s1, String s2) {
+        this.username = s1;
+        this.password = s2;
+    }
 
     public void setUsername(String u) {
         this.username = u;
