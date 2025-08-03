@@ -27,16 +27,16 @@ public class ReservationManager {
             if (con == null || con.isClosed())
                 con = connect();
 
+            // inserting to db
             PreparedStatement prst = con.prepareStatement("INSERT INTO Reservations(id, name, partySize, checkIn, checkOut) VALUES(?,?,?, ?, ?);");
             prst.setString(1, reservations.getGuest().getEmail());
             prst.setString(2, reservations.getGuest().getName());
             prst.setInt(3, reservations.getGuest().getPartySize());
-
-            SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-DD HH:mm:ss");
-            prst.setString(4, formatter.format(reservations.getCheckIn())); // in progress
-            prst.setString(5, formatter.format(reservations.getCheckOut())); // in progress
+            prst.setString(4, reservations.getCheckIn());
+            prst.setString(5, reservations.getCheckOut());
             prst.executeUpdate();
 
+            // Updating room db
             prst = con.prepareStatement("UPDATE " + reservations.getRoom().getRoomType() + " SET occupied = ?, guest_id = ? " + "WHERE room_num = (SELECT room_num FROM " + reservations.getRoom().getRoomType() + " WHERE room_num BETWEEN 1 AND 10 AND occupied IS NULL AND guest_id IS NULL " + "LIMIT 1)");
             prst.setBoolean(1, true);
             prst.setString(2, reservations.getGuest().getEmail());
