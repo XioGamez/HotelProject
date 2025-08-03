@@ -9,20 +9,20 @@ public class GuestManager {
     public void signUp(Login log, Guest guest) throws SQLException {
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
 
-            try(PreparedStatement prst = con.prepareStatement("SELECT user_id FROM login WHERE user_id = ?")) {
+            try(PreparedStatement prst = con.prepareStatement("SELECT user_email FROM login WHERE user_email = ?")) {
                 prst.setString(1,guest.getEmail());
                 
                     try(ResultSet rs = prst.executeQuery()) {
                         if(!rs.next()) {
 
-                        try(PreparedStatement prst2 = con.prepareStatement("INSERT INTO login(username,user_id,hash) VALUES(?,?,?)")) {
+                        try(PreparedStatement prst2 = con.prepareStatement("INSERT INTO login(username,user_email,hash) VALUES(?,?,?)")) {
                             prst2.setString(1, log.getUsername());
                             prst2.setString(2, guest.getEmail());
                             prst2.setInt(3,log.getHashcode());
                             prst2.executeUpdate();
                         }
 
-                        try(PreparedStatement prst3 = con.prepareStatement("Insert INTO Guest(id,name,partySize) VALUES(?,?,?)")) {
+                        try(PreparedStatement prst3 = con.prepareStatement("Insert INTO Guest(email,name,partySize) VALUES(?,?,?)")) {
                             prst3.setString(1,guest.getEmail());
                             prst3.setString(2,guest.getName());
                             prst3.setInt(3,guest.getPartySize());
