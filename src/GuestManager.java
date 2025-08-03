@@ -65,12 +65,12 @@ public class GuestManager {
     public Guest getInfo(Login log) throws SQLException {
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
 
-            try(PreparedStatement prst = con.prepareStatement("SELECT * FROM Guest WHERE id = ?")) {
+            try(PreparedStatement prst = con.prepareStatement("SELECT * FROM Guest WHERE email = ?")) {
                 prst.setString(1,log.getUserId());
 
                 try(ResultSet rs = prst.executeQuery()) {
                     if(rs.next()) {
-                        return new Guest(rs.getString("id"),rs.getString("name"),rs.getInt("partySize"));
+                        return new Guest(rs.getString("email"),rs.getString("name"),rs.getInt("partySize"));
                     }
                 }
             }
