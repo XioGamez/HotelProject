@@ -15,7 +15,7 @@
             <Image url="@resources/images/beach.jpeg" />
          </image>
       </ImageView>
-      <Button layoutX="48.0" layoutY="90.0" mnemonicParsing="false" text="Make Reservation">
+      <Button layoutX="48.0" layoutY="90.0" mnemonicParsing="false" onAction="#makeReservation" text="Make Reservation">
          <font>
             <Font name="Comic Sans MS Bold" size="13.0" />
          </font>
