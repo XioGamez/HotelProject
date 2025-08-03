@@ -8,6 +8,13 @@ public class Main extends Application {
     public static void main(String[] args) throws Exception {
         launch(args);
 
+        // Leave this here for testing reservation related methods.
+        
+        /*Guest guest = new Guest("Bruce Wayne","Batman.inc",3);
+        Hotel room = new Standard();
+        Reservation r = new Reservation(guest,room,"24/03/2000","03/24/2000");
+        ReservationManager rm = new ReservationManager();
+        rm.addReservation(r); */
     }
 
     @Override

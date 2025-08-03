@@ -6,40 +6,39 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RoomSelectionController">
    <children>
-      <Label layoutX="47.0" layoutY="218.0" prefHeight="122.0" prefWidth="140.0" text="Standard">
+      <Label layoutX="37.0" layoutY="139.0" prefHeight="122.0" prefWidth="140.0" text="Standard">
          <font>
             <Font name="Broadway" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="266.0" layoutY="200.0" prefHeight="158.0" prefWidth="153.0" text="Deluxe">
+      <Label layoutX="245.0" layoutY="121.0" prefHeight="158.0" prefWidth="153.0" text="Deluxe">
          <font>
             <Font name="Broadway" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="453.0" layoutY="195.0" prefHeight="167.0" prefWidth="146.0" text="Suite">
+      <Label layoutX="453.0" layoutY="116.0" prefHeight="167.0" prefWidth="146.0" text="Suite">
          <font>
             <Font name="Broadway" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="78.0" layoutY="312.0" mnemonicParsing="false" text="select">
+      <Button layoutX="78.0" layoutY="312.0" mnemonicParsing="false" onAction="#setReservation_Standard" text="select">
          <font>
             <Font name="Broadway" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="277.0" layoutY="312.0" mnemonicParsing="false" text="Select">
+      <Button layoutX="255.0" layoutY="312.0" mnemonicParsing="false" onAction="#setReservation_Deluxe" text="Select">
          <font>
             <Font name="Broadway" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="453.0" layoutY="312.0" mnemonicParsing="false" text="Select">
+      <Button layoutX="477.0" layoutY="312.0" mnemonicParsing="false" onAction="#setReservation_Suite" text="Select">
          <font>
             <Font name="Broadway" size="13.0" />
          </font>
       </Button>
-      <TextField alignment="CENTER" layoutX="136.0" layoutY="43.0" promptText="Check In">
+      <TextField fx:id="checkInText" alignment="CENTER" layoutX="136.0" layoutY="43.0" promptText="Check In">
          <font>
             <Font name="Broadway" size="14.0" />
          </font>
@@ -54,7 +53,7 @@
             <Font name="Broadway" size="14.0" />
          </font>
       </Label>
-      <TextField alignment="CENTER" layoutX="136.0" layoutY="83.0" prefHeight="26.0" prefWidth="186.0" promptText="Check Out">
+      <TextField fx:id="checkOutText" alignment="CENTER" layoutX="136.0" layoutY="83.0" prefHeight="26.0" prefWidth="186.0" promptText="Check Out">
          <font>
             <Font name="Broadway" size="14.0" />
          </font>
