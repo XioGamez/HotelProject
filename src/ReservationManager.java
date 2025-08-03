@@ -27,7 +27,7 @@ public class ReservationManager {
             if (con == null || con.isClosed())
                 con = connect();
 
-            PreparedStatement prst = con.prepareStatement("INSERT INTO Reservations(id, name, partySize, checkIn, checkOut) VALUES(?,?,?, ?, ?);");
+            PreparedStatement prst = con.prepareStatement("INSERT INTO Reservation(email, name, partySize, checkIn, checkOut) VALUES(?,?,?, ?, ?);");
             prst.setString(1, reservations.getGuest().getEmail());
             prst.setString(2, reservations.getGuest().getName());
             prst.setInt(3, reservations.getGuest().getPartySize());

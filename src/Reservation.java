@@ -16,6 +16,12 @@ public class Reservation {
     public Hotel getRoom() {
         return room;
     }
+    public void setCheckIn(String s) {
+        this.checkIn = s;
+    }
+    public void setCheckOut(String s) {
+        this.checkOut = s;
+    }
     public String getCheckIn() {
         return checkIn;
     }
