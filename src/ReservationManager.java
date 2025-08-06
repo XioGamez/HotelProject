@@ -7,6 +7,25 @@ import java.text.SimpleDateFormat;
 
 public class ReservationManager {
 
+    public void CancelReservation(Reservation reservation) {
+        String roomType = reservation.getRoom().getRoomType();
+
+        try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
+
+            try(PreparedStatement prst = con.prepareStatement("UPDATE " + roomType + " SET occupied = ?, guest_email = ? " + "WHERE room_num = (SELECT room_num FROM " + roomType + " WHERE room_num BETWEEN 1 AND 10 AND occupied IS NULL AND guest_email IS NULL " + "LIMIT 1)");) {
+                prst.setBoolean(1,false);
+                prst.setString(1, null);
+            }
+            try(PreparedStatement prst2 = con.prepareStatement("DELETE FROM")) {
+                
+            }
+
+        }
+        catch(SQLException e) {
+            System.out.println(e.getMessage());
+        }
+}
+
     public Reservation getReservation(Guest guest, String checkIn, String checkOut)  { 
         
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {                    
