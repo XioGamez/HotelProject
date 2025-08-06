@@ -35,7 +35,7 @@ public class RoomSelectionController {
         rm = new ReservationManager();
         rm.addReservation(r);
 
-        Parent root = FXMLLoader.load(getClass().getResource("ReservationConfirmation.fxml"));
+        root = FXMLLoader.load(getClass().getResource("ReservationConfirmation.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
