@@ -14,7 +14,15 @@ public class Main extends Application {
         Hotel room = new Standard();
         Reservation r = new Reservation(guest,room,"24/03/2000","03/24/2000");
         ReservationManager rm = new ReservationManager();
-        rm.addReservation(r); */
+        rm.addReservation(r); 
+
+        Guest guest = new Guest("Bruce Wayne","Batman.inc",3);
+        ReservationManager r = new ReservationManager();
+        Reservation oldReservation = r.getReservation(guest,"24/03/2000","03/24/2000");
+        Hotel room = new Deluxe();
+        Reservation newReservation = new Reservation(guest,room,"08/16/1985","16/08/1988");
+        r.updateReservation(newReservation, oldReservation); */
+
     }
 
     @Override
