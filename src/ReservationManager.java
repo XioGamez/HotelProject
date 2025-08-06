@@ -16,10 +16,9 @@ public class ReservationManager {
                 prst.setBoolean(1,false);
                 prst.setString(1, null);
             }
-            try(PreparedStatement prst2 = con.prepareStatement("DELETE FROM")) {
-                
+            try(PreparedStatement prst2 = con.prepareStatement("DELETE FROM Reservation WHERE email = ?")) {
+                prst2.setString(1, reservation.getGuest().getEmail());
             }
-
         }
         catch(SQLException e) {
             System.out.println(e.getMessage());
