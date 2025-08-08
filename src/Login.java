@@ -33,7 +33,7 @@ public class Login {
         return this.password;
     }
 
-    public String getUserId() {
+    public String getUserEmail() {
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
 
             try(PreparedStatement prst = con.prepareStatement("SELECT * FROM login WHERE username = ?")) {

@@ -30,11 +30,18 @@ public class SearchController {
     }
 
     public void searchReservation(ActionEvent event) throws IOException {
-        String email = emailText.getText();
-        String checkin = checkinText.getText();
-        String checkout = checkoutText.getText();
+       this.oldReservation = reservationManager.getReservation(guest, checkinText.getText(), checkoutText.getText());
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("display.fxml"));
+       root = loader.load();
+        
+       DisplayController displayController = loader.getController();
+       displayController.setGuest(this.guest);
+       displayController.setOldReservation(this.oldReservation);
 
-        this.oldReservation = reservationManager.getReservation(guest, checkin, checkout);
+       stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+       scene = new Scene(root);
+       stage.setScene(scene);
+       stage.show(); 
 
     }
 }
