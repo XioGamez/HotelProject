@@ -60,6 +60,7 @@ public class DisplayController {
             ReservationManager r1 = new ReservationManager();
             r1.updateReservation(newReservation, oldReservation);
         }
+
         else {
             Hotel room = new Suite();
             this.newReservation = new Reservation(guest, room,newCheckInText.getText(),newCheckOutText.getText());
