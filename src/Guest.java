@@ -2,8 +2,6 @@ public class Guest {
     private String name;
     private String email;
     private int partySize;
-    private Payment payment;
-
     public Guest(String name, String email) {
         this.name = name;
         this.email = email;
@@ -24,6 +22,6 @@ public class Guest {
         return partySize;
     }
     public void setPartySize(int s) {
-        this.partySize = s;
+        partySize = s;
     }
 }
