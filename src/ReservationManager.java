@@ -127,6 +127,19 @@ public class ReservationManager {
                     prst2.executeUpdate();
                     System.out.println("Reservation added.");
                 }
+
+                // add payment to db
+                // add Payment payment as a parameter
+                /*
+                try(PreparedStatement prst3 = con.prepareStatement("INSERT INTO Payment(paymentId, method, amount, date, status) VALUES(?, ?, ?, ?, ?);)")) {
+                    prst3.setString(reservations.getGuest().getEmail());
+                    prst3.setString(2, payment.getMethod());
+                    prst3.setDouble(3, payment.getAmount());
+                    prst3.setString(4, payment.getDate());
+                    prst3.setString(5, payment.getStatus());
+                    prst3.executeUpdate();
+                }
+                 */
             }
             
         catch (SQLException e) {
