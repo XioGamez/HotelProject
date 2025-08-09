@@ -41,6 +41,11 @@ public class DisplayController {
         this.guest = guest;
     }
 
+    public void display(){
+        oldRoomLabel.setText(oldReservation.getRoom().getRoomType());
+        oldCheckInLabel.setText(oldReservation.getCheckIn());
+        oldCheckOutLabel.setText(oldReservation.getCheckOut());
+    }
 
 
 }
