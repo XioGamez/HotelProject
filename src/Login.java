@@ -7,7 +7,6 @@ import java.sql.SQLException;
 public class Login {
     private String username;
     private String password;
-    private int hash;
 
     public Login(String s1, String s2) {
         this.username = s1;
@@ -34,7 +33,7 @@ public class Login {
         return this.password;
     }
 
-    public String getUserId() {
+    public String getUserEmail() {
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
 
             try(PreparedStatement prst = con.prepareStatement("SELECT * FROM login WHERE username = ?")) {

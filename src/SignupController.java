@@ -39,7 +39,7 @@ public class SignupController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu.fxml"));
             root = loader.load();
 
-            MenuController menuController = new MenuController();
+            MenuController menuController = loader.getController();
             menuController.setGuest(guest);
 
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();

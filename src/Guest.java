@@ -23,4 +23,7 @@ public class Guest {
     public int getPartySize() {
         return partySize;
     }
+    public void setPartySize(int s) {
+        this.partySize = s;
+    }
 }
