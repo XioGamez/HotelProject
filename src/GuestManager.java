@@ -66,7 +66,7 @@ public class GuestManager {
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
 
             try(PreparedStatement prst = con.prepareStatement("SELECT * FROM Guest WHERE email = ?")) {
-                prst.setString(1,log.getUserId());
+                prst.setString(1,log.getUserEmail());
 
                 try(ResultSet rs = prst.executeQuery()) {
                     if(rs.next()) {
