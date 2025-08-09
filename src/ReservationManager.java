@@ -7,6 +7,27 @@ import java.text.SimpleDateFormat;
 
 public class ReservationManager {
 
+    public void CancelReservation(Reservation reservation) {
+        String roomType = reservation.getRoom().getRoomType();
+        try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
+
+            try(PreparedStatement prst = con.prepareStatement("UPDATE " + roomType + " SET occupied = ?, guest_email = ? " + "WHERE room_num = (SELECT room_num FROM " + roomType + " WHERE room_num BETWEEN 1 AND 10 AND occupied IS 1 AND guest_email = ? LIMIT 1)")) {
+                prst.setBoolean(1,false);
+                prst.setString(2, null);
+                prst.setString(3,reservation.getGuest().getEmail());
+                prst.executeUpdate();
+            }
+            try(PreparedStatement prst2 = con.prepareStatement("DELETE FROM Reservation WHERE email = ?")) {
+                prst2.setString(1, reservation.getGuest().getEmail());
+                prst2.executeUpdate();
+            }
+        }
+        catch(SQLException e) {
+            System.out.println(e.getMessage());
+        }
+}
+
+
     public Reservation getReservation(Guest guest, String checkIn, String checkOut)  { 
         
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {                    
@@ -54,7 +75,7 @@ public class ReservationManager {
                 String roomType = newReservation.getRoom().getRoomType();
                 newReservation.setOccupancy(true);
                 
-                try(PreparedStatement prst = con.prepareStatement("UPDATE " + roomType + " SET occupied = ?, guest_email = ? " + "WHERE room_num = (SELECT room_num FROM " + roomType + " WHERE room_num BETWEEN 1 AND 10 AND occupied IS NULL AND guest_email IS NULL " + "LIMIT 1)");) {
+                try(PreparedStatement prst = con.prepareStatement("UPDATE " + roomType + " SET occupied = ?, guest_email = ? " + "WHERE room_num = (SELECT room_num FROM " + roomType + " WHERE room_num BETWEEN 1 AND 10 AND occupied = 0 AND guest_email IS NULL " + "LIMIT 1)");) {
                     prst.setBoolean(1, newReservation.getOccupancy());
                     prst.setString(2, newReservation.getGuest().getEmail());
                     prst.executeUpdate();
@@ -98,6 +119,7 @@ public class ReservationManager {
                 }
             }
         }
+
         catch(SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -119,7 +141,7 @@ public class ReservationManager {
                 }
 
                 // Updating room db
-                try(PreparedStatement prst2 = con.prepareStatement("UPDATE " + reservations.getRoom().getRoomType() + " SET occupied = ?, guest_email = ? " + "WHERE room_num = (SELECT room_num FROM " + reservations.getRoom().getRoomType() + " WHERE room_num BETWEEN 1 AND 10 AND occupied IS NULL AND guest_email IS NULL " + "LIMIT 1)");){
+                try(PreparedStatement prst2 = con.prepareStatement("UPDATE " + reservations.getRoom().getRoomType() + " SET occupied = ?, guest_email = ? " + "WHERE room_num = (SELECT room_num FROM " + reservations.getRoom().getRoomType() + " WHERE room_num BETWEEN 1 AND 10 AND occupied = 0 AND guest_email IS NULL " + "LIMIT 1)");){
                     prst2.setBoolean(1, true);
                     prst2.setString(2, reservations.getGuest().getEmail());
                     prst2.executeUpdate();
