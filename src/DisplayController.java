@@ -47,5 +47,38 @@ public class DisplayController {
         oldCheckOutLabel.setText(oldReservation.getCheckOut());
     }
 
+    public void update(ActionEvent event) throws IOException {
+        if(newRoomText.getText().equals("Standard")) {
+            Hotel room = new Standard();
+            this.newReservation = new Reservation(guest, room,newCheckInText.getText(),newCheckOutText.getText());
+            ReservationManager r1 = new ReservationManager();
+            r1.updateReservation(newReservation, oldReservation);
+        }
+        else if(newRoomText.getText().equals("Deluxe")) {
+            Hotel room = new Deluxe();
+            this.newReservation = new Reservation(guest, room,newCheckInText.getText(),newCheckOutText.getText());
+            ReservationManager r1 = new ReservationManager();
+            r1.updateReservation(newReservation, oldReservation);
+        }
+        else {
+            Hotel room = new Suite();
+            this.newReservation = new Reservation(guest, room,newCheckInText.getText(),newCheckOutText.getText());
+            ReservationManager r1 = new ReservationManager();
+            r1.updateReservation(newReservation, oldReservation);
+        }
+        
+        root = FXMLLoader.load(getClass().getResource("ReservationConfirmation.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        
+    }
+
+    public void switchScene(ActionEvent event) throws IOException {
+        
+        
+    }
+
 
 }

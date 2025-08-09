@@ -21,7 +21,7 @@
       <TextField fx:id="newCheckOutText" layoutX="372.0" layoutY="179.0" />
       <Label layoutX="205.0" layoutY="52.0" text="Old" />
       <Label layoutX="422.0" layoutY="44.0" text="New" />
-      <Button layoutX="287.0" layoutY="257.0" mnemonicParsing="false" text="Confirm" />
+      <Button layoutX="287.0" layoutY="257.0" mnemonicParsing="false" onAction="#update" text="Confirm" />
       <Label fx:id="oldRoomLabel" layoutX="153.0" layoutY="81.0" prefHeight="18.0" prefWidth="122.0" text="oldRoomType" />
       <Label fx:id="oldCheckInLabel" layoutX="153.0" layoutY="137.0" prefHeight="18.0" prefWidth="137.0" text="oldCheckIn" />
       <Label fx:id="oldCheckOutLabel" layoutX="153.0" layoutY="183.0" prefHeight="18.0" prefWidth="138.0" text="oldCheckOut" />
