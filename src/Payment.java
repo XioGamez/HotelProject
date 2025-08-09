@@ -1,17 +1,19 @@
 public class Payment {
-    private String paymentID;
+    private String paymentId;
     private String method;
     private double amount;
     private String date;
+    private String status;
 
-    public Payment(String paymentID, String method, double amount, String date) {
-        this.paymentID = paymentID;
+    public Payment(Reservation reservation, String method, double amount, String date) {
+        paymentId = reservation.getGuest().getEmail();
         this.method = method;
         this.amount = amount;
         this.date = date;
+        status = "Pending";
     }
     public String getPaymentID() {
-        return paymentID;
+        return paymentId;
     }
     public String getMethod() {
         return method;
@@ -21,5 +23,11 @@ public class Payment {
     }
     public String getDate() {
         return date;
+    }
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    public String getStatus() {
+        return status;
     }
 }
