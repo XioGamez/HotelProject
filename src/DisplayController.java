@@ -76,9 +76,14 @@ public class DisplayController {
         
     }
 
-    public void switchScene(ActionEvent event) throws IOException {
-        
-        
+    public void CancelReservation(ActionEvent event) throws IOException{
+        ReservationManager r1 = new ReservationManager();
+        r1.CancelReservation(oldReservation);
+        Parent root = FXMLLoader.load(getClass().getResource("ReservationConfirmation.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
 

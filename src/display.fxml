@@ -25,5 +25,6 @@
       <Label fx:id="oldRoomLabel" layoutX="153.0" layoutY="81.0" prefHeight="18.0" prefWidth="122.0" text="oldRoomType" />
       <Label fx:id="oldCheckInLabel" layoutX="153.0" layoutY="137.0" prefHeight="18.0" prefWidth="137.0" text="oldCheckIn" />
       <Label fx:id="oldCheckOutLabel" layoutX="153.0" layoutY="183.0" prefHeight="18.0" prefWidth="138.0" text="oldCheckOut" />
+      <Button layoutX="259.0" layoutY="306.0" mnemonicParsing="false" onAction="#CancelReservation" text="Cancel Reservation" />
    </children>
 </AnchorPane>
