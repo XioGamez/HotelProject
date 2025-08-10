@@ -1,3 +1,4 @@
+package backend;
 public class Deluxe extends Hotel{
     public String getRoomType(){
         return "Deluxe";
