@@ -1,5 +1,7 @@
 .vscode/
 bin/
-.DS_Store
-src/.DS_Store
-src/controller/
+.idea
+HotelProject.iml
+out/
+hotel
+

@@ -3,7 +3,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
+
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class ReservationManager {
 
@@ -147,6 +149,19 @@ public class ReservationManager {
                     prst2.executeUpdate();
                     System.out.println("Reservation added.");
                 }
+
+                // add payment to db
+                // add Payment payment as a parameter
+                /*
+                try(PreparedStatement prst3 = con.prepareStatement("INSERT INTO Payment(paymentId, method, amount, date, status) VALUES(?, ?, ?, ?, ?);)")) {
+                    prst3.setString(reservations.getGuest().getEmail());
+                    prst3.setString(2, payment.getMethod());
+                    prst3.setDouble(3, payment.getAmount());
+                    prst3.setString(4, payment.getDate());
+                    prst3.setString(5, payment.getStatus());
+                    prst3.executeUpdate();
+                }
+                 */
             }
             
         catch (SQLException e) {
@@ -154,5 +169,44 @@ public class ReservationManager {
             e.printStackTrace();
         }
     }
- 
+
+    public void printReservationInfo(Reservation reservations) {
+        try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
+            PreparedStatement prst = con.prepareStatement("SELECT guest.id, guest.name, guest.partySize, guest.checkIn, guest.checkOut, rm.roomTyoe, rm.price FROM Reservation guest JOIN Room rm ON guest.room_num = rm.id WHERE r.id = ?");
+            prst.setString(1, reservations.getGuest().getEmail());
+            ResultSet rs = prst.executeQuery();
+
+            if (!rs.next())
+                System.out.println("Reservation not found.");
+
+            String email = rs.getString("guest.id");
+            String name = rs.getString("guest.name");
+            int partySize = rs.getInt("guest.partySize");
+            String checkIn = rs.getString("guest.checkIn");
+            String checkOut = rs.getString("guest.checkOut");
+            String roomType = rs.getString("rm.roomType");
+            double price = rs.getInt("rm.price");
+
+            LocalDate checkInDate = LocalDate.parse(checkIn);
+            LocalDate checkOutDate = LocalDate.parse(checkOut);
+            long nights = ChronoUnit.DAYS.between(checkInDate, checkOutDate);
+
+            System.out.println(name);
+            System.out.println(email);
+            System.out.println(partySize);
+            System.out.println(roomType);
+            System.out.println(price);
+            System.out.println(checkInDate);
+            System.out.println(checkOutDate);
+            System.out.println(nights);
+            System.out.println(price * nights);
+
+            rs.close();
+            prst.close();
+        }
+        catch (SQLException e) {
+            System.out.println("Unable to print reservation info. " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 }
