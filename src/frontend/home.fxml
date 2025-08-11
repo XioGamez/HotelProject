@@ -39,7 +39,7 @@
          <children>
             <ImageView fitHeight="408.0" fitWidth="600.0" layoutY="-2.0" opacity="0.7" pickOnBounds="true">
                <image>
-                  <Image url="@resources/images/beachflowers.jpeg" />
+                  <Image url="resources/images/beachflowers.jpeg" />
                </image>
             </ImageView>
             <Button fx:id="loginMainButton" layoutX="340.0" layoutY="245.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: PINK;" text="Login">

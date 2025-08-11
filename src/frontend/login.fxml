@@ -14,7 +14,7 @@
    <children>
       <ImageView fitHeight="405.0" fitWidth="609.0" layoutX="-6.0" layoutY="-2.0" opacity="0.66" pickOnBounds="true">
          <image>
-            <Image url="@resources/images/beachflowers.jpeg" />
+            <Image url="resources/images/beachflowers.jpeg" />
          </image>
       </ImageView>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="334.0" layoutY="130.0" textAlignment="CENTER" textFill="#141414">
