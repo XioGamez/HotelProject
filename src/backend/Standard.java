@@ -1,3 +1,4 @@
+package backend;
 public class Standard extends Hotel {
     public String getRoomType(){
         return "Standard";

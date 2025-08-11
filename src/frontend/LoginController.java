@@ -1,6 +1,10 @@
+package frontend;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import backend.Guest;
+import backend.GuestManager;
+import backend.Login;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

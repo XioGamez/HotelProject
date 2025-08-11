@@ -1,5 +1,13 @@
+package frontend;
 import java.io.IOException;
 
+import backend.Deluxe;
+import backend.Guest;
+import backend.Hotel;
+import backend.Reservation;
+import backend.ReservationManager;
+import backend.Standard;
+import backend.Suite;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;

@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SignupController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.SignupController">
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.47" pickOnBounds="true">
          <image>
-            <Image url="@resources/images/beachflowers.jpeg" />
+            <Image url="resources/images/beachflowers.jpeg" />
          </image>
       </ImageView>
       <Label layoutX="250.0" layoutY="31.0" text="Welcome!" textFill="#179e17">
