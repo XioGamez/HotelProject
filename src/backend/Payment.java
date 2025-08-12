@@ -4,14 +4,40 @@ public class Payment {
     private String method;
     private double amount;
     private String date;
-    private String status;
+    private boolean status;
+    private String cardNum;
+    private String room_type;
 
-    public Payment(Reservation reservation, String method, double amount, String date) {
-        paymentId = reservation.getGuest().getEmail();
+    // Constructor for guest with card payment
+    public Payment(Guest guest, String method, String cardNum) {
+        this.paymentId = guest.getEmail();
         this.method = method;
-        this.amount = amount;
+        this.cardNum = cardNum;
+    }
+
+    // Constructor for guest with cash payment
+    public Payment(Guest guest, String method) {
+        this.paymentId = guest.getEmail();
+        this.method = method;
+    }
+
+    
+    public Payment(Guest guest, String method, String cardNum, String date, String room_type) {
+        this.paymentId = guest.getEmail();
+        this.method = method;
         this.date = date;
-        status = "Pending";
+        this.status = true;
+        this.room_type = room_type;
+        this.cardNum = cardNum;
+    }
+
+    
+    public Payment(Guest guest, String method, String date, String room_type) {
+        paymentId = guest.getEmail();
+        this.method = method;
+        this.date = date;
+        this.status = false;
+        this.room_type = room_type;
     }
     public String getPaymentID() {
         return paymentId;
@@ -25,10 +51,16 @@ public class Payment {
     public String getDate() {
         return date;
     }
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
-    public String getStatus() {
+    public boolean getStatus() {
         return status;
+    }
+    public String getRoomType() {
+        return this.room_type;
+    }
+    public String getCardNum() {
+        return this.cardNum;
     }
 }
