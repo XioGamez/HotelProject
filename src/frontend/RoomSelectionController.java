@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import backend.Deluxe;
 import backend.Guest;
 import backend.Hotel;
+import backend.Payment;
 import backend.Reservation;
 import backend.ReservationManager;
 import backend.Standard;
@@ -27,14 +28,23 @@ public class RoomSelectionController {
     Guest guest;
     Reservation r;
     ReservationManager rm;
+    Payment payment;
 
     @FXML
     TextField checkInText;
     @FXML
     TextField checkOutText;
 
+    @FXML
+    public void initialize() {
+        
+    }
+
     public void setGuest(Guest guest) {
         this.guest = guest;
+    }
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 
     public void setReservation_Standard(ActionEvent event) throws IOException {

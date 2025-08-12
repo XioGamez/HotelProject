@@ -83,7 +83,7 @@ public class ReservationManager {
                     prst.setString(2, newReservation.getGuest().getEmail());
                     prst.executeUpdate();
                 }
-                try(PreparedStatement prst2 = con.prepareStatement("Update Reservation SET email = ?, name = ?, partySize = ?, checkIn = ?, checkOut = ?, Room_Type = ? WHERE email = ?")) {
+                try(PreparedStatement prst2 = con.prepareStatement("UPDATE Reservation SET email = ?, name = ?, partySize = ?, checkIn = ?, checkOut = ?, Room_Type = ? WHERE email = ?")) {
                     prst2.setString(1, newReservation.getGuest().getEmail());
                     prst2.setString(2, newReservation.getGuest().getName());
                     prst2.setInt(3,newReservation.getGuest().getPartySize());

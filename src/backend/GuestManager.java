@@ -23,7 +23,7 @@ public class GuestManager {
                             prst2.executeUpdate();
                         }
 
-                        try(PreparedStatement prst3 = con.prepareStatement("Insert INTO Guest(email,name,partySize) VALUES(?,?,?)")) {
+                        try(PreparedStatement prst3 = con.prepareStatement("INSERT INTO Guest(email,name,partySize) VALUES(?,?,?)")) {
                             prst3.setString(1,guest.getEmail());
                             prst3.setString(2,guest.getName());
                             prst3.setInt(3,guest.getPartySize());

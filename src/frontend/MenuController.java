@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.EventObject;
 
 import backend.Guest;
+import backend.Payment;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,9 +21,13 @@ public class MenuController {
     private Parent root;
     
     Guest guest;
+    Payment payment;
 
     public void setGuest(Guest guest) {
         this.guest = guest;
+    }
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 
     public void search(ActionEvent event) throws IOException {

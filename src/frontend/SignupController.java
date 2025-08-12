@@ -40,11 +40,11 @@ public class SignupController {
             GuestManager g1 = new GuestManager();
             g1.signUp(log,guest);
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("payment_info.fxml"));
             root = loader.load();
 
-            MenuController menuController = loader.getController();
-            menuController.setGuest(guest);
+            PaymentInfoController paymentInfoController = loader.getController();
+            paymentInfoController.setGuest(guest);
 
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
