@@ -18,37 +18,37 @@
                   <Image url="@../resources/images/beachflowers.jpeg" />
                </image>
             </ImageView>
-            <Button fx:id="loginMainButton" layoutX="340.0" layoutY="245.0" mnemonicParsing="false" onAction="#logIn" style="-fx-background-color: PINK;" text="Login">
+            <Button fx:id="loginMainButton" layoutX="269.0" layoutY="304.0" mnemonicParsing="false" onAction="#logIn" style="-fx-background-color: clear;" text="Login">
                <font>
-                  <Font name="Comic Sans MS Bold" size="13.0" />
+                  <Font name="Comic Sans MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="signupMainButton" layoutX="410.0" layoutY="245.0" mnemonicParsing="false" onAction="#signUp" style="-fx-background-color: PINK;" text="Sign Up">
+            <Button fx:id="signupMainButton" layoutX="259.0" layoutY="344.0" mnemonicParsing="false" onAction="#signUp" style="-fx-background-color: clear;" text="Sign Up">
                <font>
-                  <Font name="Comic Sans MS Bold" size="13.0" />
+                  <Font name="Comic Sans MS Bold" size="18.0" />
                </font>
             </Button>
             <VBox alignment="CENTER" spacing="10" />
-            <Label layoutX="300.0" layoutY="14.0" text="HOME" textFill="#38942e" underline="true">
+            <Label layoutX="86.0" layoutY="5.0" text="HOME" textFill="WHITE" underline="true">
                <font>
                   <Font name="Comic Sans MS Bold" size="13.0" />
                </font>
             </Label>
-            <Label layoutX="389.0" layoutY="14.0" text="CONTACTS" textFill="#38942e" underline="true">
+            <Label layoutX="260.0" layoutY="3.0" text="CONTACTS" textFill="WHITE" underline="true">
                <font>
                   <Font name="Comic Sans MS Bold" size="13.0" />
                </font>
             </Label>
-            <Label layoutX="513.0" layoutY="14.0" text="REVIEWS" textFill="#38942e" underline="true">
+            <Label layoutX="460.0" layoutY="3.0" text="REVIEWS" textFill="WHITE" underline="true">
                <font>
                   <Font name="Comic Sans MS Bold" size="13.0" />
                </font>
             </Label>
-         <Label layoutX="314.0" layoutY="93.0" text="4 SEASONS &#10;HOTEL&#10;&amp;&#10;RESORT" textAlignment="CENTER" textFill="#38942e">
-            <font>
-               <Font name="Comic Sans MS Bold" size="27.0" />
-            </font>
-         </Label>
+            <ImageView fitHeight="208.0" fitWidth="245.0" layoutX="195.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/images/4Seasonslogofinal.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </center>
