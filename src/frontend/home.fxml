@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.VBox?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.HomeController">
    <center>
@@ -21,23 +22,33 @@
                   <Image url="resources/images/beachflowers.jpeg" />
                </image>
             </ImageView>
-            <Button fx:id="loginMainButton" layoutX="340.0" layoutY="245.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: PINK;" text="Login">
+            <Button fx:id="loginMainButton" layoutX="340.0" layoutY="245.0" mnemonicParsing="false" onAction="#logIn" style="-fx-background-color: PINK;" text="Login">
                <font>
                   <Font name="Comic Sans MS Bold" size="13.0" />
-               </font></Button>
+               </font>
+            </Button>
             <Button fx:id="signupMainButton" layoutX="410.0" layoutY="245.0" mnemonicParsing="false" onAction="#signUp" style="-fx-background-color: PINK;" text="Sign Up">
                <font>
                   <Font name="Comic Sans MS Bold" size="13.0" />
-               </font></Button>
+               </font>
+            </Button>
+            <VBox alignment="CENTER" spacing="10">
+               <ImageView fitHeight="100" fitWidth="100" layoutY="-2.0" opacity="0.7" pickOnBounds="true">
+                  <image>
+                     <Image url="@../resources/images/4Seasonslogo.png" />
+                  </image>
+               </ImageView>
             <Label layoutX="322.0" layoutY="85.0" text="4 SEASONS &#10;HOTEL&#10;&amp;&#10;RESORT" textAlignment="CENTER" textFill="#38942e">
                <font>
                   <Font name="Comic Sans MS Bold" size="27.0" />
                </font>
             </Label>
+            </VBox>
             <Label layoutX="300.0" layoutY="14.0" text="HOME" textFill="#38942e" underline="true">
                <font>
                   <Font name="Comic Sans MS Bold" size="13.0" />
-               </font></Label>
+               </font>
+            </Label>
             <Label layoutX="389.0" layoutY="14.0" text="CONTACTS" textFill="#38942e" underline="true">
                <font>
                   <Font name="Comic Sans MS Bold" size="13.0" />

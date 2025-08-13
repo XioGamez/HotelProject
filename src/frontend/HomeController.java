@@ -14,7 +14,7 @@ public class HomeController {
     private Stage stage;
     private Scene scene;
 
-    public void login(ActionEvent event) throws IOException {
+    public void logIn(ActionEvent event) throws IOException {
             
             Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
