@@ -48,11 +48,4 @@
                   <Font name="System Italic" size="17.0" />
                </font>
             </TextField>
-            <Label layoutX="112.0" layoutY="317.0" text="Forgot password?" textFill="#a81cff" />
-         </children>
-      </AnchorPane>
-   </children>
-   <cursor>
-      <Cursor fx:constant="OPEN_HAND" />
-   </cursor>
-</AnchorPane>
+            <Label layoutX="112.0" lay
