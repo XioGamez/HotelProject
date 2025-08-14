@@ -17,5 +17,6 @@
       <TextField fx:id="checkinText" layoutX="213.0" layoutY="159.0" promptText="Check In Date" />
       <TextField fx:id="checkoutText" layoutX="213.0" layoutY="222.0" promptText="Check Out Date" />
       <Button layoutX="266.0" layoutY="273.0" mnemonicParsing="false" onAction="#searchReservation" text="Submit" />
+      <Button layoutX="23.0" layoutY="22.0" mnemonicParsing="false" onAction="#backButton" text="Back" />
    </children>
 </AnchorPane>
