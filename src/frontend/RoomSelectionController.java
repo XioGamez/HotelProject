@@ -23,7 +23,6 @@ import javafx.stage.Stage;
 public class RoomSelectionController {
     private Stage stage;
     private Scene scene;
-    private Parent root;
 
     Hotel room;
     Guest guest;
@@ -52,32 +51,20 @@ public class RoomSelectionController {
 
     public void setReservation_Standard(ActionEvent event) throws IOException {
         room = new Standard();
-        r = new Reservation(guest,room, checkInText,checkOutText);
-        rm = new ReservationManager();
-        rm.addReservation(r);
-
-        root = FXMLLoader.load(getClass().getResource("ReservationConfirmation.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        reservationConfirmation(event);
     }
 
     public void setReservation_Deluxe(ActionEvent event) throws IOException  {
         room = new Deluxe();
-        r = new Reservation(guest,room,checkInText,checkOutText);
-        rm = new ReservationManager();
-        rm.addReservation(r);
-
-        Parent root = FXMLLoader.load(getClass().getResource("ReservationConfirmation.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        reservationConfirmation(event);
     }
 
     public void setReservation_Suite(ActionEvent event) throws IOException {
         room = new Suite();
+        reservationConfirmation(event);
+    }
+
+    public void reservationConfirmation(ActionEvent event) throws IOException {
         r = new Reservation(guest,room,checkInText,checkOutText);
         rm = new ReservationManager();
         rm.addReservation(r);
@@ -90,7 +77,12 @@ public class RoomSelectionController {
     }
 
     public void backButton(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu.fxml"));
+        Parent root = loader.load();
+
+        MenuController rsc = loader.getController();
+        rsc.setGuest(this.guest);
+
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
