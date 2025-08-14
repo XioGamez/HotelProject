@@ -9,19 +9,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.LoginController">
    <children>
       <ImageView fitHeight="405.0" fitWidth="609.0" layoutX="-6.0" layoutY="-2.0" opacity="0.66" pickOnBounds="true">
          <image>
-            <Image url="resources/images/beachflowers.jpeg" />
+            <Image url="@../resources/images/beachflowers.jpeg" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="334.0" layoutY="130.0" textAlignment="CENTER" textFill="#141414">
-         <font>
-            <Font name="Comic Sans MS Bold" size="24.0" />
-         </font>
-      </Label>
       <Label alignment="TOP_LEFT" layoutX="71.0" layoutY="14.0" text="HOME">
          <font>
             <Font name="Lucida Grande Bold" size="13.0" />
@@ -30,13 +24,23 @@
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Label>
-      <AnchorPane layoutX="138.0" layoutY="59.0" opacity="0.88" prefHeight="284.0" prefWidth="321.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+      <Label alignment="TOP_RIGHT" layoutX="489.0" layoutY="14.0" text="REVIEWS">
+         <font>
+            <Font name="Lucida Grande Bold" size="13.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="140.0" layoutY="39.0" opacity="0.88" prefHeight="339.0" prefWidth="307.0" style="-fx-background-color: white; -fx-background-radius: 20;">
          <children>
-            <TextField fx:id="userNameText" layoutX="81.0" layoutY="72.0" promptText="Type your username" />
-            <TextField fx:id="passwordText" layoutX="81.0" layoutY="142.0" promptText="Type your password" />
-            <Button fx:id="loginButton" alignment="CENTER" layoutX="47.0" layoutY="206.0" mnemonicParsing="false" onAction="#logIn" prefHeight="36.0" prefWidth="228.0" style="-fx-background-color: pink; -fx-background-radius: 15;" text="Login" textFill="#101110">
+            <ImageView fitHeight="137.0" fitWidth="161.0" layoutX="92.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: glow;">
+               <image>
+                  <Image url="@../resources/images/4Seasons.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="userNameText" layoutX="83.0" layoutY="188.0" promptText="Type your username" style="-fx-font-style: red;" />
+            <TextField fx:id="passwordText" layoutX="82.0" layoutY="238.0" promptText="Type your password" />
+            <Button fx:id="loginButton" alignment="CENTER" layoutX="46.0" layoutY="273.0" mnemonicParsing="false" onAction="#logIn" prefHeight="36.0" prefWidth="228.0" style="-fx-background-color: pink; -fx-background-radius: 15;" text="Login" textFill="#101110">
                <font>
-                  <Font name="Lucida Grande Bold" size="18.0" />
+                  <Font name="Comic Sans MS Bold" size="18.0" />
                </font>
             </Button>
             <TextField fx:id="printText" alignment="CENTER" layoutX="-1.0" layoutY="14.0" prefHeight="26.0" prefWidth="322.0" style="-fx-background-color: WHITE;" text="Enter your login info">
@@ -44,12 +48,9 @@
                   <Font name="System Italic" size="17.0" />
                </font>
             </TextField>
+            <Label layoutX="112.0" layoutY="317.0" text="Forgot password?" textFill="#a81cff" />
          </children>
       </AnchorPane>
-      <Label alignment="TOP_RIGHT" layoutX="489.0" layoutY="14.0" text="REVIEWS">
-         <font>
-            <Font name="Lucida Grande Bold" size="13.0" />
-         </font></Label>
    </children>
    <cursor>
       <Cursor fx:constant="OPEN_HAND" />

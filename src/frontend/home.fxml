@@ -2,73 +2,53 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.HomeController">
-   <top>
-      <MenuBar>
-         <menus>
-            <Menu text="File">
-               <items>
-                  <MenuItem text="New" />
-                  <MenuItem text="Open" />
-                  <MenuItem text="Save" />
-                  <SeparatorMenuItem />
-                  <MenuItem text="OpenExit" />
-               </items>
-            </Menu>
-            <Menu text="Edit">
-               <items>
-                  <MenuItem text="Copy" />
-                  <MenuItem text="Paste"  />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
-   </top>
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <children>
             <ImageView fitHeight="408.0" fitWidth="600.0" layoutY="-2.0" opacity="0.7" pickOnBounds="true">
                <image>
-                  <Image url="resources/images/beachflowers.jpeg" />
+                  <Image url="@../resources/images/beachflowers.jpeg" />
                </image>
             </ImageView>
-            <Button fx:id="loginMainButton" layoutX="340.0" layoutY="245.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: PINK;" text="Login">
+            <Button fx:id="loginMainButton" layoutX="269.0" layoutY="304.0" mnemonicParsing="false" onAction="#logIn" style="-fx-background-color: transparent;" text="Login" >
                <font>
-                  <Font name="Comic Sans MS Bold" size="13.0" />
-               </font></Button>
-            <Button fx:id="signupMainButton" layoutX="410.0" layoutY="245.0" mnemonicParsing="false" onAction="#signUp" style="-fx-background-color: PINK;" text="Sign Up">
-               <font>
-                  <Font name="Comic Sans MS Bold" size="13.0" />
-               </font></Button>
-            <Label layoutX="322.0" layoutY="85.0" text="4 SEASONS &#10;HOTEL&#10;&amp;&#10;RESORT" textAlignment="CENTER" textFill="#38942e">
-               <font>
-                  <Font name="Comic Sans MS Bold" size="27.0" />
+                  <Font name="Comic Sans MS Bold" size="18.0" />
                </font>
-            </Label>
-            <Label layoutX="300.0" layoutY="14.0" text="HOME" textFill="#38942e" underline="true">
+            </Button>
+            <Button fx:id="signupMainButton" layoutX="259.0" layoutY="344.0" mnemonicParsing="false" onAction="#signUp" style="-fx-background-color: transparent;" text="Sign Up" >
                <font>
-                  <Font name="Comic Sans MS Bold" size="13.0" />
-               </font></Label>
-            <Label layoutX="389.0" layoutY="14.0" text="CONTACTS" textFill="#38942e" underline="true">
+                  <Font name="Comic Sans MS Bold" size="18.0" />
+               </font>
+            </Button>
+            <VBox alignment="CENTER" spacing="10" />
+            <Label layoutX="86.0" layoutY="5.0" text="HOME" textFill="WHITE" underline="true">
                <font>
                   <Font name="Comic Sans MS Bold" size="13.0" />
                </font>
             </Label>
-            <Label layoutX="513.0" layoutY="14.0" text="REVIEWS" textFill="#38942e" underline="true">
+            <Label layoutX="260.0" layoutY="3.0" text="CONTACTS" textFill="WHITE" underline="true">
                <font>
                   <Font name="Comic Sans MS Bold" size="13.0" />
                </font>
             </Label>
+            <Label layoutX="460.0" layoutY="3.0" text="REVIEWS" textFill="WHITE" underline="true">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="13.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="logoImageView" fitHeight="208.0" fitWidth="245.0" layoutX="195.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/images/4Seasonslogofinal.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </center>
