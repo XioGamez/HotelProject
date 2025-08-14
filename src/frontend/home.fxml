@@ -44,7 +44,7 @@
                   <Font name="Comic Sans MS Bold" size="13.0" />
                </font>
             </Label>
-            <ImageView fitHeight="208.0" fitWidth="245.0" layoutX="195.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logoImageView" fitHeight="208.0" fitWidth="245.0" layoutX="195.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/images/4Seasonslogofinal.png" />
                </image>
