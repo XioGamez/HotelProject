@@ -18,12 +18,12 @@
                   <Image url="@../resources/images/beachflowers.jpeg" />
                </image>
             </ImageView>
-            <Button fx:id="loginMainButton" layoutX="269.0" layoutY="304.0" mnemonicParsing="false" onAction="#logIn" style="-fx-background-color: clear;" text="Login">
+            <Button fx:id="loginMainButton" layoutX="269.0" layoutY="304.0" mnemonicParsing="false" onAction="#logIn" style="-fx-background-color: transparent;" text="Login" >
                <font>
                   <Font name="Comic Sans MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="signupMainButton" layoutX="259.0" layoutY="344.0" mnemonicParsing="false" onAction="#signUp" style="-fx-background-color: clear;" text="Sign Up">
+            <Button fx:id="signupMainButton" layoutX="259.0" layoutY="344.0" mnemonicParsing="false" onAction="#signUp" style="-fx-background-color: transparent;" text="Sign Up" >
                <font>
                   <Font name="Comic Sans MS Bold" size="18.0" />
                </font>
