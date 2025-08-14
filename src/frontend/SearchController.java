@@ -1,5 +1,7 @@
 package frontend;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import backend.Guest;
 import backend.Reservation;
@@ -9,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
@@ -25,16 +28,20 @@ public class SearchController {
     @FXML
     private TextField emailText;
     @FXML
-    private TextField checkinText;
+    private DatePicker checkInDate;
     @FXML
-    private TextField checkoutText;
+    private DatePicker checkOutDate;
+
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+    String checkinText;
+    String checkoutText;
 
     public void setGuest(Guest guest) {
         this.guest = guest;
     }
 
     public void searchReservation(ActionEvent event) throws IOException {
-       this.oldReservation = reservationManager.getReservation(guest, checkinText.getText(), checkoutText.getText());
+       this.oldReservation = reservationManager.getReservation(guest, checkinText, checkoutText);
        FXMLLoader loader = new FXMLLoader(getClass().getResource("display.fxml"));
        root = loader.load();
         
@@ -61,5 +68,14 @@ public class SearchController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void getCheckIn(ActionEvent event) throws IOException {
+        LocalDate localDate = checkInDate.getValue();
+        checkinText = localDate.format(formatter);
+    }
+    public void getCheckOut(ActionEvent event) throws IOException {
+        LocalDate localDate = checkOutDate.getValue();
+        checkoutText = localDate.format(formatter);
     }
 }
