@@ -50,18 +50,24 @@ public class RoomSelectionController {
     }
 
     public void setReservation_Standard(ActionEvent event) throws IOException {
-        room = new Standard();
-        reservationConfirmation(event);
+        if(checkInText != null && checkOutText != null) {
+            room = new Standard();
+            reservationConfirmation(event);
+        }
     }
 
     public void setReservation_Deluxe(ActionEvent event) throws IOException  {
-        room = new Deluxe();
-        reservationConfirmation(event);
+        if(checkInText != null && checkOutText != null) {
+            room = new Deluxe();
+            reservationConfirmation(event);
+        }
     }
 
     public void setReservation_Suite(ActionEvent event) throws IOException {
-        room = new Suite();
-        reservationConfirmation(event);
+        if(checkInText != null && checkOutText != null) {
+            room = new Suite();
+            reservationConfirmation(event);
+        }
     }
 
     public void reservationConfirmation(ActionEvent event) throws IOException {
