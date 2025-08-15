@@ -45,17 +45,26 @@ public class Payment {
     public String getMethod() {
         return method;
     }
+    public void setAmount(double a) {
+        this.amount = a;
+    }
     public double getAmount() {
         return amount;
     }
     public String getDate() {
         return date;
     }
+    public void setDate(String s) {
+        this.date = s;
+    }
     public void setStatus(boolean status) {
         this.status = status;
     }
     public boolean getStatus() {
         return status;
+    }
+    public void setRoomType(String s) {
+        this.room_type = s;
     }
     public String getRoomType() {
         return this.room_type;
