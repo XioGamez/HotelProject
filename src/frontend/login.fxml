@@ -51,6 +51,7 @@
             <Label layoutX="112.0" layoutY="317.0" text="Forgot password?" textFill="#a81cff" />
          </children>
       </AnchorPane>
+      <Button layoutX="14.0" layoutY="341.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="back" />
    </children>
    <cursor>
       <Cursor fx:constant="OPEN_HAND" />
