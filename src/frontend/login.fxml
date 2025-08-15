@@ -18,7 +18,7 @@
       </ImageView>
       <Label alignment="TOP_LEFT" layoutX="71.0" layoutY="14.0" text="HOME">
          <font>
-            <Font name="Lucida Grande Bold" size="13.0" />
+            <Font name="Comic Sans MS Bold" size="13.0" />
          </font></Label>
       <Label alignment="TOP_CENTER" layoutX="270.0" layoutY="14.0" text="CONTACT">
          <font>
@@ -26,7 +26,7 @@
          </font></Label>
       <Label alignment="TOP_RIGHT" layoutX="489.0" layoutY="14.0" text="REVIEWS">
          <font>
-            <Font name="Lucida Grande Bold" size="13.0" />
+            <Font name="Comic Sans MS Bold" size="13.0" />
          </font>
       </Label>
       <AnchorPane layoutX="140.0" layoutY="39.0" opacity="0.88" prefHeight="339.0" prefWidth="307.0" style="-fx-background-color: white; -fx-background-radius: 20;">
@@ -45,7 +45,7 @@
             </Button>
             <TextField fx:id="printText" alignment="CENTER" layoutX="-1.0" layoutY="14.0" prefHeight="26.0" prefWidth="322.0" style="-fx-background-color: WHITE;" text="Enter your login info">
                <font>
-                  <Font name="System Italic" size="17.0" />
+                  <Font name="Comic Sans MS Bold" size="17.0" />
                </font>
             </TextField>
             <Label layoutX="112.0" layoutY="317.0" text="Forgot password?" textFill="#a81cff" />

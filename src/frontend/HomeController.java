@@ -4,10 +4,7 @@ import java.io.IOException;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
 import javafx.animation.ParallelTransition;
-import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 
 import javafx.event.ActionEvent;
@@ -18,8 +15,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.paint.Color;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -41,10 +36,6 @@ public class HomeController {
         popFromBottom(logoImageView,   0); //LC: logo first
         popFromBottom(loginMainButton, 120); // then login
         popFromBottom(signupMainButton,240); // then signup
-
-        //Purple hover glow only on hover (no base glow)
-        addHoverGlow(loginMainButton);
-        addHoverGlow(signupMainButton);
     }
 
     //LC: Slide-up + fade-in for any node
@@ -65,52 +56,6 @@ public class HomeController {
         ParallelTransition combo = new ParallelTransition(slide, fade);
         combo.setDelay(Duration.millis(delayMs));
         combo.play();
-    }
-
-    //LC: Hover-only purple glow for buttons
-    private void addHoverGlow(Button b) {
-        DropShadow shadow = new DropShadow();
-        shadow.setOffsetX(0);
-        shadow.setOffsetY(0);
-
-        //LC: Start with no effect at rest
-        b.setEffect(null);
-
-        //LC: Animate from no glow -> glow
-        Timeline hoverIn = new Timeline(
-            new KeyFrame(Duration.ZERO,
-                new KeyValue(shadow.radiusProperty(), 1),
-                new KeyValue(shadow.spreadProperty(), 0.0),
-                new KeyValue(shadow.colorProperty(), Color.web("#8A2BE2", 0.0))
-            ),
-            new KeyFrame(Duration.millis(160),
-                new KeyValue(shadow.radiusProperty(), 24, Interpolator.EASE_OUT),
-                new KeyValue(shadow.spreadProperty(), 0.40, Interpolator.EASE_OUT),
-                new KeyValue(shadow.colorProperty(), Color.web("#8A2BE2", 1.0), Interpolator.EASE_OUT)
-            ) 
-        );
-
-        //LC: Animate back to no glow, then effect will remove entirely
-        Timeline hoverOut = new Timeline(
-            new KeyFrame(Duration.millis(160),
-                new KeyValue(shadow.radiusProperty(), 1, Interpolator.EASE_IN),
-                new KeyValue(shadow.spreadProperty(), 0.0, Interpolator.EASE_IN),
-                new KeyValue(shadow.colorProperty(), Color.web("#8A2BE2", 0.0), Interpolator.EASE_IN)
-            )
-        );
-        hoverOut.setOnFinished(e -> b.setEffect(null));
-
-        b.setOnMouseEntered(e -> { 
-            hoverOut.stop();
-            //LC: attach effect and animate
-            b.setEffect(shadow);
-            hoverIn.playFromStart();
-        });
-
-        b.setOnMouseExited(e -> { 
-            hoverIn.stop();
-            hoverOut.playFromStart();
-        });
     }
 
     public void logIn(ActionEvent event) throws IOException {
