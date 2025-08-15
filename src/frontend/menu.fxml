@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.46" pickOnBounds="true">
          <image>
-            <Image url="resources/images/beach.jpeg" />
+            <Image url="@../resources/images/beachscene.jpeg" />
          </image>
       </ImageView>
       <Label layoutX="185.0" layoutY="14.0" text="Reservation Options">
