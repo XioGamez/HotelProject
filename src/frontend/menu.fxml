@@ -32,5 +32,6 @@
             <Font name="Comic Sans MS Bold" size="13.0" />
          </font>
       </Button>
+      <Button layoutX="29.0" layoutY="330.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="64.0" text="log out" />
    </children>
 </AnchorPane>
