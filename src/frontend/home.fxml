@@ -51,4 +51,5 @@
             </ImageView>
          </children>
       </AnchorPane>
-   </cen
+   </center>
+</BorderPane>
