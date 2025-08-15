@@ -4,4 +4,6 @@ bin/
 HotelProject.iml
 out/
 hotel
+.DS_Store
+src/.DS_Store
 

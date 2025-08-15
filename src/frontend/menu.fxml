@@ -11,23 +11,23 @@
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.46" pickOnBounds="true">
          <image>
-            <Image url="@../resources/images/beach.jpeg" />
+            <Image url="@../resources/images/beachscene.jpeg" />
          </image>
       </ImageView>
-      <Label layoutX="185.0" layoutY="14.0" text="Reservation Options">
+      <Label layoutX="173.0" layoutY="14.0" text="Reservation Options">
          <font>
             <Font name="Comic Sans MS Bold" size="24.0" />
          </font></Label>
-      <Button layoutX="236.0" layoutY="87.0" mnemonicParsing="false" onAction="#makeReservation" text="Make Reservation">
+      <Button layoutX="224.0" layoutY="96.0" mnemonicParsing="false" onAction="#makeReservation" text="Make Reservation">
          <font>
             <Font name="Comic Sans MS Bold" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="236.0" layoutY="277.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="118.0" text="Leave A Review">
+      <Button layoutX="229.0" layoutY="275.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="118.0" text="Leave A Review">
          <font>
             <Font name="Comic Sans MS Bold" size="13.0" />
          </font></Button>
-      <Button layoutX="236.0" layoutY="181.0" mnemonicParsing="false" onAction="#search" prefHeight="26.0" prefWidth="129.0" text="Search for Reservation">
+      <Button layoutX="204.0" layoutY="186.0" mnemonicParsing="false" onAction="#search" prefHeight="28.0" prefWidth="170.0" text="Search for Reservation">
          <font>
             <Font name="Comic Sans MS Bold" size="13.0" />
          </font>

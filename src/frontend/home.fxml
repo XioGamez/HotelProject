@@ -18,14 +18,14 @@
                   <Image url="@../resources/images/beachflowers.jpeg" />
                </image>
             </ImageView>
-            <Button fx:id="loginMainButton" layoutX="269.0" layoutY="304.0" mnemonicParsing="false" onAction="#logIn" style="-fx-background-color: transparent;" text="Login" >
+            <Button fx:id="loginMainButton" layoutX="277.0" layoutY="274.0" mnemonicParsing="false" onAction="#logIn" prefHeight="24.0" prefWidth="60.0" style="-fx-background-color: pink;" text="Login">
                <font>
-                  <Font name="Comic Sans MS Bold" size="18.0" />
+                  <Font name="Comic Sans MS Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="signupMainButton" layoutX="259.0" layoutY="344.0" mnemonicParsing="false" onAction="#signUp" style="-fx-background-color: transparent;" text="Sign Up" >
+            <Button fx:id="signupMainButton" layoutX="267.0" layoutY="325.0" mnemonicParsing="false" onAction="#signUp" style="-fx-background-color: pink;" text="Sign Up">
                <font>
-                  <Font name="Comic Sans MS Bold" size="18.0" />
+                  <Font name="Comic Sans MS Bold" size="16.0" />
                </font>
             </Button>
             <VBox alignment="CENTER" spacing="10" />
@@ -44,7 +44,7 @@
                   <Font name="Comic Sans MS Bold" size="13.0" />
                </font>
             </Label>
-            <ImageView fx:id="logoImageView" fitHeight="208.0" fitWidth="245.0" layoutX="195.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logoImageView" fitHeight="208.0" fitWidth="245.0" layoutX="201.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/images/4Seasonslogofinal.png" />
                </image>
