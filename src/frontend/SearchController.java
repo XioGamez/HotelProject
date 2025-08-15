@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import backend.Guest;
+import backend.Payment;
 import backend.Reservation;
 import backend.ReservationManager;
 import javafx.event.ActionEvent;
@@ -23,6 +24,7 @@ public class SearchController {
     private Parent root;
     private Guest guest;
     private Reservation oldReservation;
+    private Payment payment;
     private ReservationManager reservationManager = new ReservationManager();
 
     @FXML
@@ -36,6 +38,9 @@ public class SearchController {
     String checkinText;
     String checkoutText;
 
+    public void setPayment(Payment p) {
+        this.payment = p;
+    }
     public void setGuest(Guest guest) {
         this.guest = guest;
     }

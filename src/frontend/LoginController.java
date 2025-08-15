@@ -41,7 +41,7 @@ public class LoginController {
             if(g1.login(log)){ 
                 guest = g1.getInfo(log);
                 payment = p.getPaymentInfo(guest);
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu.fxml"));	
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("menu.fxml"));	
 		        root = loader.load();	
                 
                 MenuController menuController = loader.getController();
