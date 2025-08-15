@@ -5,17 +5,29 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.PaymentInfoController">
    <children>
+      <ImageView fitHeight="407.0" fitWidth="607.0" layoutX="-6.0" layoutY="-2.0" opacity="0.54" pickOnBounds="true">
+         <image>
+            <Image url="@../resources/images/beachscene.jpeg" />
+         </image>
+      </ImageView>
       <Label layoutX="21.0" layoutY="14.0" prefHeight="38.0" prefWidth="328.0" text="Please enter your payment info:">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="Comic Sans MS Bold" size="18.0" />
          </font>
       </Label>
-      <RadioButton fx:id="cardButton" layoutX="198.0" layoutY="95.0" mnemonicParsing="false" text="card">
+      <Label layoutX="14.0" layoutY="95.0" text="Payment method:">
+         <font>
+            <Font name="Comic Sans MS Bold" size="14.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="cardButton" layoutX="198.0" layoutY="95.0" mnemonicParsing="false" text="Card">
          <font>
             <Font size="14.0" />
          </font>
@@ -23,26 +35,15 @@
             <ToggleGroup fx:id="toggleGroup" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="cashButton" layoutX="440.0" layoutY="95.0" mnemonicParsing="false" text="cash" toggleGroup="$toggleGroup">
+      <RadioButton fx:id="cashButton" layoutX="440.0" layoutY="95.0" mnemonicParsing="false" text="Cash" toggleGroup="$toggleGroup">
          <font>
             <Font size="14.0" />
          </font>
       </RadioButton>
-      <Label layoutX="14.0" layoutY="95.0" text="payment method:">
+      <Label fx:id="cardLabel" layoutX="13.0" layoutY="178.0" prefHeight="20.0" prefWidth="118.0" text="Card number:">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="Comic Sans MS Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="textLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="245.0" prefHeight="106.0" prefWidth="398.0" text="Label" wrapText="true">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Label>
-      <Button layoutX="267.0" layoutY="350.0" mnemonicParsing="false" onAction="#addPayment" text="submit" />
       <TextField fx:id="cardNumText" layoutX="176.0" layoutY="175.0" />
-      <Label fx:id="cardLabel" layoutX="13.0" layoutY="178.0" prefHeight="20.0" prefWidth="118.0" text="card number:">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-   </children>
-</AnchorPane>
+      <ImageView fitHeight="38.0" fitWidth="127.
