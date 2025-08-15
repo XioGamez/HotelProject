@@ -45,6 +45,9 @@ public class Payment {
     public String getMethod() {
         return method;
     }
+    public void setAmount(double a) {
+        this.amount = a;
+    }
     public double getAmount() {
         return amount;
     }

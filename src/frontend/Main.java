@@ -9,11 +9,11 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     public static void main(String[] args) throws Exception {
-      //  launch(args);
+         launch(args);
 
         // Leave this here for testing reservation related methods.
         
-        Guest guest = new Guest("Bruce Wayne","Batman.inc",3);
+        //Guest guest = new Guest("Bruce Wayne","Batman.inc",3);
         /*Login log = new Login("Batman","Robin");
         GuestManager gm = new GuestManager();
         gm.signUp(log, guest);
@@ -30,9 +30,9 @@ public class Main extends Application {
         r.updateReservation(newReservation, oldReservation);
         //r.CancelReservation(newReservation); */
         //Payment payment = new Payment(guest,"card","232323232");
-        PaymentManager pm = new PaymentManager();
+        /*PaymentManager pm = new PaymentManager();
         Payment newPayment = pm.getPaymentInfo(guest);
-        System.out.println(newPayment.getCardNum() + " " + newPayment.getPaymentID());
+        System.out.println(newPayment.getCardNum() + " " + newPayment.getPaymentID());*/
 
     }
 
