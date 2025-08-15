@@ -31,6 +31,7 @@ public class ReservationConfirmationContoller {
 
         MenuController rsc = loader.getController();
         rsc.setGuest(this.guest);
+        rsc.setPayment(this.payment);
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
