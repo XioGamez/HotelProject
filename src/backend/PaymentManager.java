@@ -39,7 +39,7 @@ public class PaymentManager {
             System.out.println(e.getMessage());
         }
     }
-    public Payment getPaymentInfo(Guest guest) {
+    /*public Payment getPaymentInfo(Guest guest) {
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
 
             try(PreparedStatement prst = con.prepareStatement("SELECT payment_method, card_num FROM Guest WHERE email = ? ")) {
@@ -54,6 +54,9 @@ public class PaymentManager {
                             return new Payment(guest, rs.getString("payment_method"));
                         }   
                     }
+                    else {
+                        return new Payment(guest,"cash");
+                    }
                 }
             }
         }
@@ -61,31 +64,36 @@ public class PaymentManager {
             System.out.println(e.getMessage());
         }
         return new Payment(guest, "cash");
-    }
+    }*/
 
-    /*public Payment getPaymentInfo(Guest guest) throws SQLException {
-    try (Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db");
-         PreparedStatement ps = con.prepareStatement(
-             "SELECT payment_method, card_num FROM Guest WHERE email = ?")) {
+    public Payment getPaymentInfo(Guest guest) {
+    try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
+         try(PreparedStatement prst = con.prepareStatement("SELECT payment_method, card_num FROM Guest WHERE email = ?")) {
+            prst.setString(1, guest.getEmail());
 
-        ps.setString(1, guest.getEmail());
+            try (ResultSet rs = prst.executeQuery()) {
+                if (rs.next()) {
+                    String method = rs.getString("payment_method");   // may be null
+                    String card   = rs.getString("card_num");         // may be null
 
-        try (ResultSet rs = ps.executeQuery()) {
-            if (rs.next()) {
-                String method = rs.getString("payment_method");        // may be null
-                String card   = rs.getString("card_num");              // may be null/blank
-
-                if ("card".equalsIgnoreCase(method) && card != null && !card.isBlank()) {
-                    return new Payment(guest, method, card);
-                } else if (method != null && !method.isBlank()) {
-                    return new Payment(guest, method);                 // e.g., "cash"
-                }
-            }
+                    if ("card".equalsIgnoreCase(method)) {
+                        return new Payment(guest, "card", card);      // ok if card is null—adjust if needed
+                    } else if ("cash".equalsIgnoreCase(method)) {
+                        return new Payment(guest, "cash");
+                    } else {
+                        // unknown or NULL → default
+                        return new Payment(guest, "cash");
+                    }
+                } else {
+                    return new Payment(guest, "cash");
+                }   
         }
     }
-    // No DB row or no usable method → fall back to a sensible default
-    return new Payment(guest, "cash");  // or new Payment(guest)
-}*/
+    } catch (SQLException e) {
+        System.out.println(e.getMessage());
+    }
+    return new Payment(guest, "cash");
+}
 
     public void processCardPayment (Payment payment)  {
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
