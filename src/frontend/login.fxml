@@ -52,7 +52,4 @@
          </children>
       </AnchorPane>
    </children>
-   <cursor>
-      <Cursor fx:constant="OPEN_HAND" />
-   </cursor>
-</AnchorPane>
+   <curso
