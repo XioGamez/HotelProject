@@ -45,6 +45,11 @@ public class SearchController {
         this.guest = guest;
     }
 
+    public void print() {
+        System.out.println(payment.getPaymentID() + " " + payment.getMethod() + " " + payment.getCardNum());
+        System.out.println(payment.getAmount() + " " + payment.getDate());
+    }
+    
     public void searchReservation(ActionEvent event) throws IOException {
        this.oldReservation = reservationManager.getReservation(guest, checkinText, checkoutText);
        FXMLLoader loader = new FXMLLoader(getClass().getResource("display.fxml"));
@@ -53,6 +58,7 @@ public class SearchController {
        DisplayController displayController = loader.getController();
        displayController.setGuest(this.guest);
        displayController.setOldReservation(this.oldReservation);
+       displayController.setPayment(this.payment);
        displayController.display();
 
        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -66,8 +72,10 @@ public class SearchController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu.fxml"));
         Parent root = loader.load();
 
-        MenuController rsc = loader.getController();
-        rsc.setGuest(this.guest);
+        MenuController mc = loader.getController();
+        mc.setGuest(this.guest);
+        mc.setPayment(this.payment);
+
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
