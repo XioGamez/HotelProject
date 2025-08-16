@@ -3,56 +3,66 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.RoomSelectionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.RoomSelectionController">
    <children>
-      <Label layoutX="37.0" layoutY="149.0" prefHeight="122.0" prefWidth="140.0" text="Standard">
+      <Label layoutX="64.0" layoutY="68.0" prefHeight="122.0" prefWidth="140.0" text="Standard">
          <font>
-            <Font name="Broadway" size="24.0" />
+            <Font name="Broadway" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="245.0" layoutY="131.0" prefHeight="158.0" prefWidth="153.0" text="Deluxe">
+      <Label layoutX="344.0" layoutY="81.0" prefHeight="95.0" prefWidth="118.0" text="Deluxe">
          <font>
-            <Font name="Broadway" size="24.0" />
+            <Font name="Broadway" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="453.0" layoutY="116.0" prefHeight="167.0" prefWidth="146.0" text="Suite">
+      <Label layoutX="608.0" layoutY="77.0" prefHeight="102.0" prefWidth="81.0" text="Suite">
          <font>
-            <Font name="Broadway" size="24.0" />
+            <Font name="Broadway" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="78.0" layoutY="312.0" mnemonicParsing="false" onAction="#setReservation_Standard" text="select">
+      <Label layoutX="57.0" layoutY="247.0" text="Check in date:">
          <font>
             <Font name="Broadway" size="13.0" />
          </font>
-      </Button>
-      <Button layoutX="255.0" layoutY="312.0" mnemonicParsing="false" onAction="#setReservation_Deluxe" text="Select">
+      </Label>
+      <Label layoutX="52.0" layoutY="299.0" text="Check Out Date:">
          <font>
             <Font name="Broadway" size="13.0" />
          </font>
-      </Button>
-      <Button layoutX="460.0" layoutY="312.0" mnemonicParsing="false" onAction="#setReservation_Suite" text="Select">
+      </Label>
+      <Label layoutX="90.0" layoutY="148.0" text="100$" />
+      <Label layoutX="370.0" layoutY="148.0" text="150$" />
+      <Label layoutX="623.0" layoutY="157.0" text="200$" />
+      <Button layoutX="24.0" layoutY="462.0" mnemonicParsing="false" onAction="#backButton" prefHeight="26.0" prefWidth="82.0" text="Back" />
+      <DatePicker fx:id="check_In" layoutX="215.0" layoutY="242.0" onAction="#getCheckIn" promptText="Enter a Date" />
+      <DatePicker fx:id="check_Out" layoutX="215.0" layoutY="294.0" onAction="#getCheckOut" promptText="Enter a Date" />
+      <RadioButton fx:id="standardButton" layoutX="90.0" layoutY="181.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="toggleGroup" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="deluxeButton" layoutX="375.0" layoutY="181.0" mnemonicParsing="false" toggleGroup="$toggleGroup" />
+      <RadioButton fx:id="suiteButton" layoutX="623.0" layoutY="181.0" mnemonicParsing="false" toggleGroup="$toggleGroup" />
+      <Label alignment="CENTER" layoutX="44.0" layoutY="32.0" prefHeight="18.0" prefWidth="635.0" text="Please make your selection" textAlignment="CENTER">
          <font>
-            <Font name="Broadway" size="13.0" />
+            <Font size="24.0" />
          </font>
-      </Button>
-      <Label layoutX="26.0" layoutY="48.0" text="Check in date">
+      </Label>
+      <Label fx:id="promptLabel" alignment="CENTER" layoutX="417.0" layoutY="220.0" prefHeight="158.0" prefWidth="358.0" wrapText="true" />
+      <Button layoutX="322.0" layoutY="428.0" mnemonicParsing="false" onAction="#reservationConfirmation" prefHeight="26.0" prefWidth="175.0" text="Confirm reservation" />
+      <Label layoutX="49.0" layoutY="350.0" prefHeight="18.0" prefWidth="125.0" text="People in party:">
          <font>
             <Font name="Broadway" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="88.0" text="Check Out Date">
-         <font>
-            <Font name="Broadway" size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="86.0" layoutY="254.0" text="100$" />
-      <Label layoutX="271.0" layoutY="254.0" text="150$" />
-      <Label layoutX="477.0" layoutY="254.0" text="200$" />
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButton" text="Back" />
-      <DatePicker fx:id="check_In" layoutX="128.0" layoutY="44.0" onAction="#getCheckIn" promptText="Enter a Date" />
-      <DatePicker fx:id="check_Out" layoutX="128.0" layoutY="84.0" onAction="#getCheckOut" promptText="Enter a Date" />
+      <TextField fx:id="partySizeText" layoutX="215.0" layoutY="347.0" prefHeight="26.0" prefWidth="175.0" />
+      <Button layoutX="612.0" layoutY="360.0" mnemonicParsing="false" onAction="#print" text="print" />
+      <Button layoutX="605.0" layoutY="449.0" mnemonicParsing="false" onAction="#finalizeReservation" text="Finalize" />
    </children>
 </AnchorPane>

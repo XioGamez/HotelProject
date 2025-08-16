@@ -32,6 +32,7 @@ public class PaymentInfoController {
     ToggleGroup toggleGroup;
     
     Guest guest;
+    Payment payment;
 
     @FXML
     public void initialize() {
@@ -53,30 +54,20 @@ public class PaymentInfoController {
     public void setGuest(Guest guest) {
         this.guest = guest;
     }
-
-    public void addPayment(ActionEvent event) throws IOException {
+    public void finalizePaymentInfo() {
         if(cardButton.isSelected()) {
-            Payment payment = new Payment(guest,"card", cardNumText.getText());
+            this.payment = new Payment(guest,"card", cardNumText.getText());
             PaymentManager p = new PaymentManager();
-            p.addPayment(payment);
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("menu.fxml"));
-            root = loader.load();
-
-            MenuController menuController = loader.getController();
-            menuController.setGuest(guest);
-            menuController.setPayment(payment);
-
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-
+            p.addPayment(payment); 
         }
         else if(cashButton.isSelected()) {
-            Payment payment = new Payment(guest, "cash");
+            this.payment = new Payment(guest,"cash");
             PaymentManager p = new PaymentManager();
-            p.addPayment(payment);
+            p.addPayment(payment); 
+        }
+    }
+    public void addPayment(ActionEvent event) throws IOException {
+            finalizePaymentInfo();
             
             FXMLLoader loader = new FXMLLoader(getClass().getResource("menu.fxml"));
             root = loader.load();
@@ -89,6 +80,6 @@ public class PaymentInfoController {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        }
+
     }
 }

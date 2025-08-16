@@ -25,5 +25,6 @@
       <TextField fx:id="usernameText" layoutX="243.0" layoutY="187.0" promptText="Choose a username" />
       <TextField fx:id="passwordText" layoutX="243.0" layoutY="227.0" promptText="Choose your password" />
       <Button layoutX="293.0" layoutY="273.0" mnemonicParsing="false" onAction="#Signup" text="Sign up" />
+      <Button layoutX="29.0" layoutY="335.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="74.0" text="back" />
    </children>
 </AnchorPane>

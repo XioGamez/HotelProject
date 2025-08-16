@@ -22,6 +22,14 @@ public class MenuController {
     
     Guest guest;
     Payment payment;
+    
+    public void logout(ActionEvent event) throws IOException{
+            Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+    }
 
     public void setGuest(Guest guest) {
         this.guest = guest;
@@ -36,6 +44,7 @@ public class MenuController {
         
         SearchController searchController = loader.getController();
         searchController.setGuest(this.guest);
+        searchController.setPayment(this.payment);
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -49,6 +58,7 @@ public class MenuController {
 
         RoomSelectionController rsc = loader.getController();
         rsc.setGuest(this.guest);
+        rsc.setPayment(this.payment);
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

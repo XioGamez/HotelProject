@@ -4,6 +4,8 @@ bin/
 HotelProject.iml
 out/
 hotel
+JavaDoc_backend
+JavaDoc_frontend
 .DS_Store
 src/.DS_Store
 

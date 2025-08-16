@@ -39,20 +39,23 @@ public class PaymentManager {
             System.out.println(e.getMessage());
         }
     }
-    public Payment getPaymentInfo(Guest guest) {
+    /*public Payment getPaymentInfo(Guest guest) {
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
 
-            try(PreparedStatement prst = con.prepareStatement("SELECT * FROM Guest WHERE email = ? ")) {
+            try(PreparedStatement prst = con.prepareStatement("SELECT payment_method, card_num FROM Guest WHERE email = ? ")) {
                 prst.setString(1,guest.getEmail());
 
                 try(ResultSet rs = prst.executeQuery()) {
                     if(rs.next()) {
-                        if(rs.getString("card_num") != null) {
+                        if(rs.getString("payment_method").equals("card")) {
                             return new Payment(guest, rs.getString("payment_method"),rs.getString("card_num"));
                         }
-                        else {
+                        else if(rs.getString("payment_method").equals("cash")) {
                             return new Payment(guest, rs.getString("payment_method"));
                         }   
+                    }
+                    else {
+                        return new Payment(guest,"cash");
                     }
                 }
             }
@@ -60,8 +63,37 @@ public class PaymentManager {
         catch(SQLException e) {
             System.out.println(e.getMessage());
         }
-        return null;
+        return new Payment(guest, "cash");
+    }*/
+
+    public Payment getPaymentInfo(Guest guest) {
+    try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
+         try(PreparedStatement prst = con.prepareStatement("SELECT payment_method, card_num FROM Guest WHERE email = ?")) {
+            prst.setString(1, guest.getEmail());
+
+            try (ResultSet rs = prst.executeQuery()) {
+                if (rs.next()) {
+                    String method = rs.getString("payment_method");   // may be null
+                    String card   = rs.getString("card_num");         // may be null
+
+                    if ("card".equalsIgnoreCase(method)) {
+                        return new Payment(guest, "card", card);      // ok if card is null—adjust if needed
+                    } else if ("cash".equalsIgnoreCase(method)) {
+                        return new Payment(guest, "cash");
+                    } else {
+                        // unknown or NULL → default
+                        return new Payment(guest, "cash");
+                    }
+                } else {
+                    return new Payment(guest, "cash");
+                }   
+        }
     }
+    } catch (SQLException e) {
+        System.out.println(e.getMessage());
+    }
+    return new Payment(guest, "cash");
+}
 
     public void processCardPayment (Payment payment)  {
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {

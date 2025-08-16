@@ -1,6 +1,7 @@
 package frontend;
 
 import backend.Guest;
+import backend.Payment;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -15,6 +16,14 @@ public class ReservationConfirmationContoller {
     private Scene scene;
 
     Guest guest;
+    Payment payment;
+
+    public void setGuest(Guest guest) {
+        this.guest = guest;
+    }
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
 
     public void menuButton(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu.fxml"));
@@ -22,6 +31,7 @@ public class ReservationConfirmationContoller {
 
         MenuController rsc = loader.getController();
         rsc.setGuest(this.guest);
+        rsc.setPayment(this.payment);
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

@@ -7,6 +7,7 @@ import backend.Deluxe;
 import backend.Guest;
 import backend.Hotel;
 import backend.Payment;
+import backend.PaymentManager;
 import backend.Reservation;
 import backend.ReservationManager;
 import backend.Standard;
@@ -18,11 +19,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 public class RoomSelectionController {
     private Stage stage;
     private Scene scene;
+    private Parent root;
 
     Hotel room;
     Guest guest;
@@ -30,6 +36,14 @@ public class RoomSelectionController {
     ReservationManager rm;
     Payment payment;
 
+    @FXML
+    RadioButton standardButton, deluxeButton, suiteButton;
+    @FXML
+    ToggleGroup toggleGroup;
+    @FXML
+    Label promptLabel;
+    @FXML
+    TextField partySizeText;
     @FXML
     DatePicker check_In;
     @FXML
@@ -40,54 +54,144 @@ public class RoomSelectionController {
     String checkOutText;
 
     @FXML
-    public void initialize() {}
+    public void initialize() {
+        toggleGroup.selectedToggleProperty().addListener((observable, oldToggle, newToggle) -> {
+            if(newToggle == standardButton) {
+                if(check_In.getValue() == null || check_Out.getValue() == null) {
+                    display("Please pick a check-in and check-out date");
+                }
+                else {
+                    display("Your total cost for a reservation with Standard room type from " + getCheckIn() + " to " + getCheckOut() + " is " + "$" + calculatePrice(100)  );
+                }    
+            }
+
+            else if(newToggle == deluxeButton) {
+                if(check_In.getValue() == null || check_Out.getValue() == null) {
+                    display("Please pick a check-in and check-out date");
+                }
+                else {
+                    display("Your total cost for a reservation with Deluxe room type from " + getCheckIn() + " to " + getCheckOut() + " is " + "$" + calculatePrice(150)  );
+                }
+            }
+
+            else if(newToggle == suiteButton) {
+                if(check_In.getValue() == null || check_Out.getValue() == null) {
+                    display("Please pick a check-in and check-out date");
+                }
+                else {
+                    display("Your total cost for a reservation with Deluxe room type from " + getCheckIn() + " to " + getCheckOut() + " is " +"$" + calculatePrice(200)  );
+                }
+            }
+
+            else if(getStartDate()!= null || getEndDate() != null && (!standardButton.isSelected() && !deluxeButton.isSelected() && !suiteButton.isSelected())) {
+                display("Please enter all required information");
+            }
+        });
+    }
+
+    public void print() {
+        System.out.println(payment.getPaymentID() + " " + payment.getMethod() + " " + payment.getCardNum());
+        System.out.println(payment.getAmount() + " " + payment.getDate());
+    }
+    public void display(String str) {
+        promptLabel.setText(str);
+    }
+
+    public LocalDate getStartDate() {
+         return check_In.getValue();
+    }
+    public LocalDate getEndDate() {
+        return check_Out.getValue();
+    }
+    public String getCheckIn() {
+        LocalDate localDate = check_In.getValue();
+        return localDate.format(formatter);
+    }
+    public String getCheckOut() {
+        LocalDate localDate = check_Out.getValue();
+        return localDate.format(formatter);
+    }
+
+    public void setHotelRoom(Hotel room) {
+        this.room = room;
+    }
+
+    public double calculatePrice(double basePrice) {
+        PaymentManager pm = new PaymentManager();
+        return pm.calculatePrice(getStartDate(), getEndDate(), basePrice);
+    }
 
     public void setGuest(Guest guest) {
         this.guest = guest;
     }
+
     public void setPayment(Payment payment) {
         this.payment = payment;
     }
 
-    public void setReservation_Standard(ActionEvent event) throws IOException {
-        if(checkInText != null && checkOutText != null) {
-            room = new Standard();
-            reservationConfirmation(event);
-        }
+    public int getPartySize() {
+        return Integer.parseInt(partySizeText.getText());
+        
     }
 
-    public void setReservation_Deluxe(ActionEvent event) throws IOException  {
-        if(checkInText != null && checkOutText != null) {
-            room = new Deluxe();
-            reservationConfirmation(event);
+    public void finalizeReservation() {
+        if(standardButton.isSelected()) {
+            this.room = new Standard();
+            this.payment.setRoomType("Standard");
+            this.payment.setDate(getCheckIn());
+            this.payment.setAmount(calculatePrice(100));
+            guest.setPartySize(getPartySize());
         }
-    }
-
-    public void setReservation_Suite(ActionEvent event) throws IOException {
-        if(checkInText != null && checkOutText != null) {
-            room = new Suite();
-            reservationConfirmation(event);
+        else if(deluxeButton.isSelected()) {
+            this.room = new Deluxe();
+            this.payment.setRoomType("Deluxe");
+            this.payment.setDate(getCheckIn());
+            this.payment.setAmount(calculatePrice(150));
+            guest.setPartySize(getPartySize());
+        }
+        else if(suiteButton.isSelected()) {
+            this.room = new Suite();
+            this.payment.setRoomType("Suite");
+            this.payment.setDate(getCheckIn());
+            this.payment.setAmount(calculatePrice(200));
+            guest.setPartySize(getPartySize());
         }
     }
 
     public void reservationConfirmation(ActionEvent event) throws IOException {
-        r = new Reservation(guest,room,checkInText,checkOutText);
+        finalizeReservation();
+        r = new Reservation(guest,room,getCheckIn(),getCheckOut());
         rm = new ReservationManager();
         rm.addReservation(r);
+        PaymentManager pm = new PaymentManager();
+        if(payment.getMethod().equals("card")) {
+            pm.processCardPayment(payment);
+        }
+        else {
+            pm.processCashPayment(payment);
+        }
 
-        Parent root = FXMLLoader.load(getClass().getResource("ReservationConfirmation.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationConfirmation.fxml"));
+        root = loader.load();
+
+        ReservationConfirmationContoller rc = loader.getController();
+        rc.setGuest(this.guest);
+        rc.setPayment(this.payment);
+
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
     }
 
     public void backButton(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu.fxml"));
         Parent root = loader.load();
 
-        MenuController rsc = loader.getController();
-        rsc.setGuest(this.guest);
+        MenuController mc = loader.getController();
+        mc.setGuest(this.guest);
+        mc.setPayment(this.payment);
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -95,12 +199,5 @@ public class RoomSelectionController {
         stage.show();
     }
 
-    public void getCheckIn(ActionEvent event) throws IOException {
-        LocalDate localDate = check_In.getValue();
-        checkInText = localDate.format(formatter);
-    }
-    public void getCheckOut(ActionEvent event) throws IOException {
-        LocalDate localDate = check_Out.getValue();
-        checkOutText = localDate.format(formatter);
-    }
+    
 }

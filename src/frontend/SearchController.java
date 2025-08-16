@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import backend.Guest;
+import backend.Payment;
 import backend.Reservation;
 import backend.ReservationManager;
 import javafx.event.ActionEvent;
@@ -23,6 +24,7 @@ public class SearchController {
     private Parent root;
     private Guest guest;
     private Reservation oldReservation;
+    private Payment payment;
     private ReservationManager reservationManager = new ReservationManager();
 
     @FXML
@@ -36,10 +38,18 @@ public class SearchController {
     String checkinText;
     String checkoutText;
 
+    public void setPayment(Payment p) {
+        this.payment = p;
+    }
     public void setGuest(Guest guest) {
         this.guest = guest;
     }
 
+    public void print() {
+        System.out.println(payment.getPaymentID() + " " + payment.getMethod() + " " + payment.getCardNum());
+        System.out.println(payment.getAmount() + " " + payment.getDate());
+    }
+    
     public void searchReservation(ActionEvent event) throws IOException {
        this.oldReservation = reservationManager.getReservation(guest, checkinText, checkoutText);
        FXMLLoader loader = new FXMLLoader(getClass().getResource("display.fxml"));
@@ -48,6 +58,7 @@ public class SearchController {
        DisplayController displayController = loader.getController();
        displayController.setGuest(this.guest);
        displayController.setOldReservation(this.oldReservation);
+       displayController.setPayment(this.payment);
        displayController.display();
 
        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -61,8 +72,10 @@ public class SearchController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu.fxml"));
         Parent root = loader.load();
 
-        MenuController rsc = loader.getController();
-        rsc.setGuest(this.guest);
+        MenuController mc = loader.getController();
+        mc.setGuest(this.guest);
+        mc.setPayment(this.payment);
+
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

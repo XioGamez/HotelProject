@@ -71,7 +71,7 @@ public class GuestManager {
 
                 try(ResultSet rs = prst.executeQuery()) {
                     if(rs.next()) {
-                        return new Guest(rs.getString("email"),rs.getString("name"),rs.getInt("partySize"));
+                        return new Guest(rs.getString("name"),rs.getString("email"));
                     }
                 }
             }

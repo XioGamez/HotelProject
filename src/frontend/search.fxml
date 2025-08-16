@@ -19,5 +19,6 @@
       <Button layoutX="23.0" layoutY="22.0" mnemonicParsing="false" onAction="#backButton" text="Back" />
       <DatePicker fx:id="checkInDate" layoutX="201.0" layoutY="158.0" onAction="#getCheckIn" promptText="Enter Check In Date" />
       <DatePicker fx:id="checkOutDate" layoutX="207.0" layoutY="208.0" onAction="#getCheckOut" promptText="Enter Check Out Date" />
+      <Button layoutX="263.0" layoutY="334.0" mnemonicParsing="false" onAction="#print" text="print" />
    </children>
 </AnchorPane>
