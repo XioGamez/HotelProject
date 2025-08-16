@@ -5,9 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 public class PaymentManager {
+    LocalDate today = LocalDate.now();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+    String dateFormatted = today.format(formatter);
 
     public double calculatePrice(LocalDate startDate, LocalDate endDate, double basePrice) {
         Long days = ChronoUnit.DAYS.between(startDate, endDate);;
@@ -104,7 +108,7 @@ public class PaymentManager {
                 prst.setDouble(3, payment.getAmount());
                 prst.setDouble(4,payment.getAmount());
                 prst.setBoolean(5, true);
-                prst.setString(6,payment.getDate());
+                prst.setString(6,dateFormatted);
                 prst.setString(7,payment.getMethod());
                 prst.setString(8,payment.getCardNum());
                 prst.executeUpdate();

@@ -89,9 +89,89 @@ public class RoomSelectionController {
         });
     }
 
+    // Make the reservation according to the information the guest entered, tied to the 'Confirm Reservation' button, calls 2 helper method
+    // finalCheck() and finalizeReservation()
+    public void reservationConfirmation(ActionEvent event) throws IOException {
+        if(finalCheck()) {
+            finalizeReservation();
+
+            r = new Reservation(guest,room,getCheckIn(),getCheckOut());
+            rm = new ReservationManager();
+            rm.addReservation(r);
+
+            PaymentManager pm = new PaymentManager();
+            if(payment.getMethod().equals("card")) {
+                pm.processCardPayment(payment);
+            }
+            else {
+                pm.processCashPayment(payment);
+            }
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationConfirmation.fxml"));
+            root = loader.load();
+
+            ReservationConfirmationContoller rc = loader.getController();
+            rc.setGuest(this.guest);
+            rc.setPayment(this.payment);
+
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        }
+        else {
+            promptLabel.setText("Please enter all required information");
+        }
+        
+    }
+
+    // Check to see if all required information has been entered
+    public boolean finalCheck() {
+        if((standardButton.isSelected() || deluxeButton.isSelected() || suiteButton.isSelected()) && check_In.getValue() != null && check_Out.getValue() != null && !partySizeText.getText().isEmpty()) {
+            return true;
+        }
+        return false;
+    }
+    // Finalize all reservation related information
+    public void finalizeReservation() {
+        if(standardButton.isSelected()) {
+            this.room = new Standard();
+            this.payment.setRoomType("Standard");
+            this.payment.setAmount(calculatePrice(100));
+            guest.setPartySize(getPartySize());
+        }
+        else if(deluxeButton.isSelected()) {
+            this.room = new Deluxe();
+            this.payment.setRoomType("Deluxe");
+            this.payment.setAmount(calculatePrice(150));
+            guest.setPartySize(getPartySize());
+        }
+        else if(suiteButton.isSelected()) {
+            this.room = new Suite();
+            this.payment.setRoomType("Suite");
+            this.payment.setAmount(calculatePrice(200));
+            guest.setPartySize(getPartySize());
+        }
+    }
+
+    public void backButton(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu.fxml"));
+        Parent root = loader.load();
+
+        MenuController mc = loader.getController();
+        mc.setGuest(this.guest);
+        mc.setPayment(this.payment);
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void print() {
         System.out.println(payment.getPaymentID() + " " + payment.getMethod() + " " + payment.getCardNum());
-        System.out.println(payment.getAmount() + " " + payment.getDate());
+        System.out.println(payment.getAmount());
     }
     public void display(String str) {
         promptLabel.setText(str);
@@ -132,71 +212,6 @@ public class RoomSelectionController {
     public int getPartySize() {
         return Integer.parseInt(partySizeText.getText());
         
-    }
-
-    public void finalizeReservation() {
-        if(standardButton.isSelected()) {
-            this.room = new Standard();
-            this.payment.setRoomType("Standard");
-            this.payment.setDate(getCheckIn());
-            this.payment.setAmount(calculatePrice(100));
-            guest.setPartySize(getPartySize());
-        }
-        else if(deluxeButton.isSelected()) {
-            this.room = new Deluxe();
-            this.payment.setRoomType("Deluxe");
-            this.payment.setDate(getCheckIn());
-            this.payment.setAmount(calculatePrice(150));
-            guest.setPartySize(getPartySize());
-        }
-        else if(suiteButton.isSelected()) {
-            this.room = new Suite();
-            this.payment.setRoomType("Suite");
-            this.payment.setDate(getCheckIn());
-            this.payment.setAmount(calculatePrice(200));
-            guest.setPartySize(getPartySize());
-        }
-    }
-
-    public void reservationConfirmation(ActionEvent event) throws IOException {
-        finalizeReservation();
-        r = new Reservation(guest,room,getCheckIn(),getCheckOut());
-        rm = new ReservationManager();
-        rm.addReservation(r);
-        PaymentManager pm = new PaymentManager();
-        if(payment.getMethod().equals("card")) {
-            pm.processCardPayment(payment);
-        }
-        else {
-            pm.processCashPayment(payment);
-        }
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationConfirmation.fxml"));
-        root = loader.load();
-
-        ReservationConfirmationContoller rc = loader.getController();
-        rc.setGuest(this.guest);
-        rc.setPayment(this.payment);
-
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
-    }
-
-    public void backButton(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu.fxml"));
-        Parent root = loader.load();
-
-        MenuController mc = loader.getController();
-        mc.setGuest(this.guest);
-        mc.setPayment(this.payment);
-
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 
     

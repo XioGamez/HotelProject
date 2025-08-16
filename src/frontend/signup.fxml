@@ -26,5 +26,10 @@
       <TextField fx:id="passwordText" layoutX="243.0" layoutY="227.0" promptText="Choose your password" />
       <Button layoutX="293.0" layoutY="273.0" mnemonicParsing="false" onAction="#Signup" text="Sign up" />
       <Button layoutX="29.0" layoutY="335.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="74.0" text="back" />
+      <Label fx:id="labelText" alignment="CENTER" layoutX="184.0" layoutY="318.0" prefHeight="18.0" prefWidth="276.0" wrapText="true">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
