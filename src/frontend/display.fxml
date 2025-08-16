@@ -50,7 +50,7 @@
       <RadioButton fx:id="suiteButton" layoutX="712.0" layoutY="118.0" mnemonicParsing="false" text="Suite" toggleGroup="$toggleGroup" />
       <DatePicker fx:id="check_In" layoutX="511.0" layoutY="179.0" promptText="check in date" />
       <DatePicker fx:id="check_Out" layoutX="511.0" layoutY="254.0" promptText="check out date" />
-      <Label fx:id="promptLabel" layoutX="436.0" layoutY="292.0" prefHeight="206.0" prefWidth="343.0" text="Label" />
+      <Label fx:id="promptLabel" layoutX="436.0" layoutY="292.0" prefHeight="206.0" prefWidth="343.0" wrapText="true" />
       <Button layoutX="410.0" layoutY="523.0" mnemonicParsing="false" onAction="#print" text="print" />
    </children>
 </AnchorPane>

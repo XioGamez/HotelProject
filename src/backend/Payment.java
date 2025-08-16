@@ -3,7 +3,6 @@ public class Payment {
     private String paymentId;
     private String method;
     private double amount;
-    private String date;
     private boolean status;
     private String cardNum;
     private String room_type;
@@ -25,7 +24,6 @@ public class Payment {
     public Payment(Guest guest, String method, String cardNum, String date, String room_type) {
         this.paymentId = guest.getEmail();
         this.method = method;
-        this.date = date;
         this.status = true;
         this.room_type = room_type;
         this.cardNum = cardNum;
@@ -35,7 +33,6 @@ public class Payment {
     public Payment(Guest guest, String method, String date, String room_type) {
         paymentId = guest.getEmail();
         this.method = method;
-        this.date = date;
         this.status = false;
         this.room_type = room_type;
     }
@@ -50,12 +47,6 @@ public class Payment {
     }
     public double getAmount() {
         return amount;
-    }
-    public String getDate() {
-        return date;
-    }
-    public void setDate(String s) {
-        this.date = s;
     }
     public void setStatus(boolean status) {
         this.status = status;

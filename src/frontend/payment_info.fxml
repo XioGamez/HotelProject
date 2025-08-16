@@ -46,7 +46,6 @@
          </font>
       </Label>
       <TextField fx:id="cardNumText" layoutX="176.0" layoutY="175.0" />
-<<<<<<< HEAD
       <ImageView fitHeight="38.0" fitWidth="127.0" layoutX="176.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/images/cclogos.png" />
@@ -61,10 +60,8 @@
             <Font name="Comic Sans MS Bold" size="14.0" />
          </font></Button>
    </children>
-=======
       <ImageView fitHeight="38.0" fitWidth="127" />
       <Button layoutX="284.0" layoutY="339.0" mnemonicParsing="false" onAction="#addPayment" prefHeight="26.0" prefWidth="117.0" text="confirm" />
       <Label fx:id="textLabel" layoutX="21.0" layoutY="277.0" prefHeight="68.0" prefWidth="238.0" text="Label" />
       </children>
->>>>>>> 4722de2b7b66a32c343911cc0e5cb3651274ba46
 </AnchorPane>

@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
@@ -33,6 +34,8 @@ public class SearchController {
     private DatePicker checkInDate;
     @FXML
     private DatePicker checkOutDate;
+    @FXML
+    Label labelText;
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
     String checkinText;
@@ -47,24 +50,30 @@ public class SearchController {
 
     public void print() {
         System.out.println(payment.getPaymentID() + " " + payment.getMethod() + " " + payment.getCardNum());
-        System.out.println(payment.getAmount() + " " + payment.getDate());
+        System.out.println(payment.getAmount());
     }
     
     public void searchReservation(ActionEvent event) throws IOException {
-       this.oldReservation = reservationManager.getReservation(guest, checkinText, checkoutText);
-       FXMLLoader loader = new FXMLLoader(getClass().getResource("display.fxml"));
-       root = loader.load();
-        
-       DisplayController displayController = loader.getController();
-       displayController.setGuest(this.guest);
-       displayController.setOldReservation(this.oldReservation);
-       displayController.setPayment(this.payment);
-       displayController.display();
+        try{
+            this.oldReservation = reservationManager.getReservation(guest, checkinText, checkoutText);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("display.fxml"));
+            root = loader.load();
+                
+            DisplayController displayController = loader.getController();
+            displayController.setGuest(this.guest);
+            displayController.setOldReservation(this.oldReservation);
+            displayController.setPayment(this.payment);
+            displayController.display();
 
-       stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-       scene = new Scene(root);
-       stage.setScene(scene);
-       stage.show(); 
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show(); 
+        }
+        catch(Exception e) {
+            labelText.setText("There are no reservations matching that information");
+            System.out.println(e.getMessage());
+        }
 
     }
 

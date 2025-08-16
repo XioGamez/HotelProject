@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -28,6 +29,8 @@ public class SignupController {
     TextField usernameText;
     @FXML
     TextField passwordText;
+    @FXML
+    Label labelText;
 
     Guest guest;
     Login log;
@@ -41,7 +44,12 @@ public class SignupController {
     }
 
     public void Signup(ActionEvent event) throws IOException, SQLException {
-            
+
+            if(nameText.getText().isEmpty() || emailText.getText().isEmpty() || usernameText.getText().isEmpty() || passwordText.getText().isEmpty()) {
+                labelText.setText("Please enter all required information");
+            }
+
+            else {
             log = new Login(usernameText.getText(),passwordText.getText());
             guest = new Guest(nameText.getText(), emailText.getText());
 
@@ -58,5 +66,6 @@ public class SignupController {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            }
         }
     }
