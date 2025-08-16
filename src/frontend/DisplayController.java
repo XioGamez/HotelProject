@@ -136,21 +136,18 @@ public class DisplayController {
         if(standardButton.isSelected()) {
             this.room = new Standard();
             this.payment.setRoomType("Standard");
-            this.payment.setDate(getCheckIn());
             this.payment.setAmount(calculatePrice(100));
             //guest.setPartySize(getPartySize());
         }
         else if(deluxeButton.isSelected()) {
             this.room = new Deluxe();
             this.payment.setRoomType("Deluxe");
-            this.payment.setDate(getCheckIn());
             this.payment.setAmount(calculatePrice(150));
             //guest.setPartySize(getPartySize());
         }
         else if(suiteButton.isSelected()) {
             this.room = new Suite();
             this.payment.setRoomType("Suite");
-            this.payment.setDate(getCheckIn());
             this.payment.setAmount(calculatePrice(200));
             //guest.setPartySize(getPartySize());
         }
@@ -163,7 +160,7 @@ public class DisplayController {
 
     public void print() {
         System.out.println(payment.getPaymentID() + " " + payment.getMethod() + " " + payment.getCardNum());
-        System.out.println(payment.getAmount() + " " + payment.getDate());
+        System.out.println(payment.getAmount());
     }
 
     public void update(ActionEvent event) throws IOException {

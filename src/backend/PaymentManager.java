@@ -10,7 +10,7 @@ import java.time.temporal.ChronoUnit;
 
 public class PaymentManager {
     LocalDate today = LocalDate.now();
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
     String dateFormatted = today.format(formatter);
 
     public double calculatePrice(LocalDate startDate, LocalDate endDate, double basePrice) {

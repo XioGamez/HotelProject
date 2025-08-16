@@ -50,7 +50,7 @@ public class SearchController {
 
     public void print() {
         System.out.println(payment.getPaymentID() + " " + payment.getMethod() + " " + payment.getCardNum());
-        System.out.println(payment.getAmount() + " " + payment.getDate());
+        System.out.println(payment.getAmount());
     }
     
     public void searchReservation(ActionEvent event) throws IOException {
