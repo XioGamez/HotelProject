@@ -162,33 +162,44 @@ public class DisplayController {
         System.out.println(payment.getPaymentID() + " " + payment.getMethod() + " " + payment.getCardNum());
         System.out.println(payment.getAmount());
     }
-
+    public boolean finalCheck() {
+        if((standardButton.isSelected() || deluxeButton.isSelected() || suiteButton.isSelected()) && check_In.getValue() != null && check_Out.getValue() != null) {
+            return true;
+        }
+        return false;
+    }
     public void update(ActionEvent event) throws IOException {
-        finalizeReservation();
+        if(finalCheck()) {
+            finalizeReservation();
 
-        this.newReservation = new Reservation(guest,room,getCheckIn(),getCheckOut());
-        ReservationManager r = new ReservationManager();
-        r.updateReservation(newReservation,oldReservation);
+            this.newReservation = new Reservation(guest,room,getCheckIn(),getCheckOut());
+            ReservationManager r = new ReservationManager();
+            r.updateReservation(newReservation,oldReservation);
 
-        PaymentManager pm = new PaymentManager();
-        if(payment.getMethod().equals("card")) {
-            pm.processCardPayment(payment);
+            PaymentManager pm = new PaymentManager();
+            if(payment.getMethod().equals("card")) {
+                pm.processCardPayment(payment);
+            }
+            else {
+                pm.processCashPayment(payment);
+            }
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationConfirmation.fxml"));
+            root = loader.load();
+
+            ReservationConfirmationContoller rc = loader.getController();
+            rc.setGuest(this.guest);
+            rc.setPayment(this.payment);
+
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         }
         else {
-            pm.processCashPayment(payment);
+            promptLabel.setText("Please enter all required informations");
         }
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationConfirmation.fxml"));
-        root = loader.load();
-
-        ReservationConfirmationContoller rc = loader.getController();
-        rc.setGuest(this.guest);
-        rc.setPayment(this.payment);
-
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show(); 
+         
     }
    /*  public void update(ActionEvent event) throws IOException {
         if(newRoomText.getText().equals("Standard")) {
