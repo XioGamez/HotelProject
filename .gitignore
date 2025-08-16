@@ -8,4 +8,5 @@ JavaDoc_backend
 JavaDoc_frontend
 .DS_Store
 src/.DS_Store
-
+hamcrest-core-1.3.jar
+junit-4.13.2.jar
