@@ -31,19 +31,14 @@ public class HomeController {
 
     //LC: responsive background sizing
     @FXML private StackPane centerStack;
-    @FXML private ImageView bgImage;
 
     @FXML
     public void initialize() {
-        if (bgImage !=null && centerStack != null) {
-            bgImage.fitWidthProperty().bind(centerStack.widthProperty());
-            bgImage.fitHeightProperty().bind(centerStack.heightProperty());
-        }
 
         //LC: Staggered entrance animations
-        if (logoImageView != null) popFromBottom(logoImageView, 0); //LC: logo first
-        if (loginMainButton != null) popFromBottom(loginMainButton, 120); // then login
-        if (signupMainButton != null) popFromBottom(signupMainButton,240); // then signup
+        popFromBottom(logoImageView, 0); //LC: logo first
+        popFromBottom(loginMainButton, 120); // then login
+        popFromBottom(signupMainButton,240); // then signup
     }
 
     //LC: Slide-up + fade-in for any node
@@ -70,4 +65,17 @@ public class HomeController {
             
             Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(ro
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        
+        }
+    public void signUp(ActionEvent event) throws IOException {
+
+            Parent root = FXMLLoader.load(getClass().getResource("signup.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+    }
+}

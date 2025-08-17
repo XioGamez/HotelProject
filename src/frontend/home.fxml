@@ -26,19 +26,14 @@
    <bottom>
       <HBox alignment="CENTER" style="-fx-padding: 8; -fx-background-color: rgba(9, 182, 192, 0.88);">
          <children>
-            <Label text="Contact: (555) 123-4567  •  support@4seasons.com" textFill="WHITE" />
+            <Label text=" Copyright (c) All Rights Reserved   •  Contact: (555) 123-4567  •  support@4seasons.com" textFill="WHITE" />
          </children>
       </HBox>
    </bottom>
    <center>
-      <StackPane fx:id="centerStack" BorderPane.alignment="CENTER"> <!-- LC: StackPane to keep content centered and the background fills screen-->
+      <StackPane fx:id="centerStack" styleClass="hero" BorderPane.alignment="CENTER"> <!-- LC: StackPane to keep content centered and the background fills screen-->
          <children>
-            <ImageView fx:id="bgImage" opacity="0.7" preserveRatio="true" pickOnBounds="true"> <!-- LC: Background image resizes with window-->
-               <image>
-                  <Image url="@../resources/images/beachflowers.jpeg" />
-               </image>
-            </ImageView>
-            <VBox alignment="CENTER" spacing="16.0"> <!-- LC: Centered logo = buttons -->
+            <VBox alignment="CENTER" spacing="16.0"> <!-- LC: Centered logo + buttons -->
                <ImageView fx:id="logoImageView" fitHeight="208.0" fitWidth="245.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../resources/images/4Seasonslogofinal.png" />

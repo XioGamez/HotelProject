@@ -24,8 +24,14 @@
       <TextField fx:id="emailText" layoutX="243.0" layoutY="149.0" promptText="Enter your email" />
       <TextField fx:id="usernameText" layoutX="243.0" layoutY="187.0" promptText="Choose a username" />
       <TextField fx:id="passwordText" layoutX="243.0" layoutY="227.0" promptText="Choose your password" />
-      <Button layoutX="293.0" layoutY="273.0" mnemonicParsing="false" onAction="#Signup" text="Sign up" />
-      <Button layoutX="29.0" layoutY="335.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="74.0" text="back" />
+      <Button layoutX="293.0" layoutY="273.0" mnemonicParsing="false" onAction="#Signup" style="-fx-background-color: pink; -fx-background-radius: 15;" text="Sign up">
+         <font>
+            <Font name="Comic Sans MS Bold" size="14.0" />
+         </font></Button>
+      <Button layoutX="29.0" layoutY="335.0" mnemonicParsing="false" onAction="#back" prefHeight="28.0" prefWidth="84.0" style="-fx-background-color: pink; -fx-background-radius: 15;" text="&lt;   Back">
+         <font>
+            <Font name="Comic Sans MS Bold" size="14.0" />
+         </font></Button>
       <Label fx:id="labelText" alignment="CENTER" layoutX="184.0" layoutY="318.0" prefHeight="18.0" prefWidth="276.0" wrapText="true">
          <font>
             <Font name="System Bold" size="14.0" />
