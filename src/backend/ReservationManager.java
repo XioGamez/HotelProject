@@ -133,7 +133,7 @@ public class ReservationManager {
             try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
                 
                 // inserting into db
-                try(PreparedStatement prst = con.prepareStatement("INSERT INTO Reservation(email, name, partySize, checkIn, checkOut, Room_Type) VALUES(?, ?, ?, ?, ?, ?);");) {
+                try(PreparedStatement prst = con.prepareStatement("INSERT INTO Reservation(email, name, partySize, checkIn, checkOut, Room_Type) VALUES(?, ?, ?, ?, ?, ?);")) {
                     prst.setString(1, reservations.getGuest().getEmail());
                     prst.setString(2, reservations.getGuest().getName());
                     prst.setInt(3, reservations.getGuest().getPartySize());
@@ -173,20 +173,27 @@ public class ReservationManager {
 
     public void printReservationInfo(Reservation reservations) {
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
-            PreparedStatement prst = con.prepareStatement("SELECT guest.id, guest.name, guest.partySize, guest.checkIn, guest.checkOut, rm.roomTyoe, rm.price FROM Reservation guest JOIN Room rm ON guest.room_num = rm.id WHERE r.id = ?");
+            PreparedStatement prst = con.prepareStatement("SELECT * FROM Reservation WHERE email = ?");
             prst.setString(1, reservations.getGuest().getEmail());
             ResultSet rs = prst.executeQuery();
 
             if (!rs.next())
                 System.out.println("Reservation not found.");
 
-            String email = rs.getString("guest.id");
-            String name = rs.getString("guest.name");
-            int partySize = rs.getInt("guest.partySize");
-            String checkIn = rs.getString("guest.checkIn");
-            String checkOut = rs.getString("guest.checkOut");
-            String roomType = rs.getString("rm.roomType");
-            double price = rs.getInt("rm.price");
+            String email = rs.getString("email");
+            String name = rs.getString("name");
+            int partySize = rs.getInt("partySize");
+            String checkIn = rs.getString("checkIn");
+            String checkOut = rs.getString("checkOut");
+            String roomType = rs.getString("Rooom_Type");
+
+            prst = con.prepareStatement("SELECT * FROM Payment WHERE guest_email = ?");
+            prst.setString(1, reservations.getGuest().getEmail());
+            ResultSet rs2 = prst.executeQuery();
+
+            String amount = rs.getString("amount_paid");
+            boolean paid = rs2.getBoolean("paid");
+            String method = rs2.getString("method");
 
             LocalDate checkInDate = LocalDate.parse(checkIn);
             LocalDate checkOutDate = LocalDate.parse(checkOut);
@@ -196,11 +203,11 @@ public class ReservationManager {
             System.out.println(email);
             System.out.println(partySize);
             System.out.println(roomType);
-            System.out.println(price);
             System.out.println(checkInDate);
             System.out.println(checkOutDate);
-            System.out.println(nights);
-            System.out.println(price * nights);
+            System.out.println(amount);
+            System.out.println(paid);
+            System.out.println(method);
 
             rs.close();
             prst.close();
