@@ -9,9 +9,9 @@ public class Login {
     private String username;
     private String password;
 
-    public Login(String s1, String s2) {
-        this.username = s1;
-        this.password = s2;
+    public Login(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
     public void setUsername(String u) {
