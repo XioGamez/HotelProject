@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class GuestManager {
 
-    public void signUp(Login log, Guest guest) throws SQLException {
+    public boolean signUp(Login log, Guest guest) throws SQLException {
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
 
             try(PreparedStatement prst = con.prepareStatement("SELECT user_email FROM login WHERE user_email = ?")) {
@@ -29,9 +29,11 @@ public class GuestManager {
                             prst3.setInt(3,guest.getPartySize());
                             prst3.executeUpdate();
                         }
+                        return true;
                     }
                     else {
                         System.out.println("You are already a member");
+                        return false;
                     }
                 }
             }
@@ -40,6 +42,7 @@ public class GuestManager {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
+        return false;
     }
 
     public Boolean login(Login log) throws SQLException {
