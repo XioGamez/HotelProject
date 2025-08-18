@@ -4,7 +4,7 @@ public class Reservation {
     private Hotel room;
     private String checkIn;
     private String checkOut;
-    private Boolean occupancy;
+    private boolean occupancy;
 
     public Reservation(Guest guest, String checkIn, String checkOut) {
         this.guest = guest;
@@ -23,22 +23,16 @@ public class Reservation {
     public Hotel getRoom() {
         return room;
     }
-    public void setCheckIn(String s) {
-        this.checkIn = s;
-    }
-    public void setCheckOut(String s) {
-        this.checkOut = s;
-    }
     public String getCheckIn() {
         return checkIn;
     }
     public String getCheckOut() {
         return checkOut;
     }
-    public Boolean getOccupancy() {
-        return this.occupancy;
+    public boolean getOccupancy() {
+        return occupancy;
     }
-    public void setOccupancy(Boolean b) {
-        this.occupancy = b;
+    public void setOccupancy(boolean b) {
+        occupancy = b;
     }
 }

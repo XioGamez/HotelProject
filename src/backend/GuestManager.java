@@ -45,7 +45,7 @@ public class GuestManager {
         return false;
     }
 
-    public Boolean login(Login log) throws SQLException {
+    public boolean login(Login log) throws SQLException {
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
 
             try(PreparedStatement prst = con.prepareStatement("SELECT * FROM login WHERE username = ?")) {
@@ -85,6 +85,7 @@ public class GuestManager {
         return null;
     }
 
+    /*
     public Login getLogin(Guest guest) {
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
 
@@ -103,5 +104,5 @@ public class GuestManager {
         }
         return null;
     }
-    
+    */
 }

@@ -19,7 +19,6 @@ public class PaymentManager {
     }
     
     public void addPayment(Payment payment) {
-
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
 
             if(payment.getMethod().equals("card")) {

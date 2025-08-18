@@ -5,34 +5,29 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-
 public class ReservationManager {
 
     public void CancelReservation(Reservation reservation) {
         String roomType = reservation.getRoom().getRoomType();
-        try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
+        try (Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
 
-            try(PreparedStatement prst = con.prepareStatement("UPDATE " + roomType + " SET occupied = ?, guest_email = ? " + "WHERE room_num = (SELECT room_num FROM " + roomType + " WHERE room_num BETWEEN 1 AND 10 AND occupied IS 1 AND guest_email = ? LIMIT 1)")) {
-                prst.setBoolean(1,false);
+            try (PreparedStatement prst = con.prepareStatement("UPDATE " + roomType + " SET occupied = ?, guest_email = ? " + "WHERE room_num = (SELECT room_num FROM " + roomType + " WHERE room_num BETWEEN 1 AND 10 AND occupied IS 1 AND guest_email = ? LIMIT 1)")) {
+                prst.setBoolean(1, false);
                 prst.setString(2, null);
-                prst.setString(3,reservation.getGuest().getEmail());
+                prst.setString(3, reservation.getGuest().getEmail());
                 prst.executeUpdate();
             }
-            try(PreparedStatement prst2 = con.prepareStatement("DELETE FROM Reservation WHERE email = ?")) {
+            try (PreparedStatement prst2 = con.prepareStatement("DELETE FROM Reservation WHERE email = ?")) {
                 prst2.setString(1, reservation.getGuest().getEmail());
                 prst2.executeUpdate();
             }
-        }
-        catch(SQLException e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-}
+    }
 
 
-    public Reservation getReservation(Guest guest, String checkIn, String checkOut)  { 
-        
+    public Reservation getReservation(Guest guest, String checkIn, String checkOut)  {
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {                    
             Hotel room;
 
@@ -49,18 +44,16 @@ public class ReservationManager {
                             guest.setPartySize(rs.getInt("PartySize"));
                             return new Reservation(guest, room, checkIn,checkOut);
                         }
-                        if(rs.getString("Room_Type").equals("Deluxe"))  {
+                        else if(rs.getString("Room_Type").equals("Deluxe"))  {
                             room = new Deluxe();
                             guest.setPartySize(rs.getInt("PartySize"));
                             return new Reservation(guest, room, checkIn,checkOut);
-                        }
-                        else {
+                        } else {
                             room = new Suite();
                             guest.setPartySize(rs.getInt("PartySize"));
                             return new Reservation(guest, room, checkIn,checkOut);
                         }
                     }
-                    
                 }
             }
         }
@@ -71,7 +64,6 @@ public class ReservationManager {
     }
 
     public Reservation getReservation(Guest guest)  {
-
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
             Hotel room;
 
@@ -87,14 +79,14 @@ public class ReservationManager {
                             String checkOut = rs.getString("checkOut");
                             return new Reservation(guest, room, checkIn,checkOut);
                         }
+
                         if(rs.getString("Room_Type").equals("Deluxe"))  {
                             room = new Deluxe();
                             guest.setPartySize(rs.getInt("PartySize"));
                             String checkIn = rs.getString("checkIn");
                             String checkOut = rs.getString("checkOut");
                             return new Reservation(guest, room, checkIn,checkOut);
-                        }
-                        else {
+                        } else {
                             room = new Suite();
                             guest.setPartySize(rs.getInt("PartySize"));
                             String checkIn = rs.getString("checkIn");
@@ -102,7 +94,6 @@ public class ReservationManager {
                             return new Reservation(guest, room, checkIn,checkOut);
                         }
                     }
-
                 }
             }
         }
@@ -113,14 +104,13 @@ public class ReservationManager {
     }
 
     public void updateReservation(Reservation newReservation, Reservation oldReservation)  {
-
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
             
             if(newReservation.getRoom().getRoomType().equals(oldReservation.getRoom().getRoomType())) {
                 String roomType = newReservation.getRoom().getRoomType();
                 newReservation.setOccupancy(true);
                 
-                try(PreparedStatement prst = con.prepareStatement("UPDATE " + roomType + " SET occupied = ?, guest_email = ? " + "WHERE room_num = (SELECT room_num FROM " + roomType + " WHERE room_num BETWEEN 1 AND 10 AND occupied = 0 AND guest_email IS NULL " + "LIMIT 1)");) {
+                try(PreparedStatement prst = con.prepareStatement("UPDATE " + roomType + " SET occupied = ?, guest_email = ? " + "WHERE room_num = (SELECT room_num FROM " + roomType + " WHERE room_num BETWEEN 1 AND 10 AND occupied = 0 AND guest_email IS NULL " + "LIMIT 1)")) {
                     prst.setBoolean(1, newReservation.getOccupancy());
                     prst.setString(2, newReservation.getGuest().getEmail());
                     prst.executeUpdate();
@@ -135,19 +125,18 @@ public class ReservationManager {
                     prst2.setString(7,oldReservation.getGuest().getEmail());
                     prst2.executeUpdate();
                 }
-            }
-            else {
+            } else {
                 String newRoomType = newReservation.getRoom().getRoomType();
                 String oldRoomType = oldReservation.getRoom().getRoomType();
                 newReservation.setOccupancy(true);
 
-                try(PreparedStatement prst3 = con.prepareStatement("UPDATE " + oldRoomType + " SET occupied = ?, guest_email = ? WHERE guest_email = ?");) {
+                try(PreparedStatement prst3 = con.prepareStatement("UPDATE " + oldRoomType + " SET occupied = ?, guest_email = ? WHERE guest_email = ?")) {
                     prst3.setBoolean(1, false);
                     prst3.setString(2,null);
                     prst3.setString(3,oldReservation.getGuest().getEmail());
                     prst3.executeUpdate();
                 }
-                try(PreparedStatement prst = con.prepareStatement("UPDATE " + newRoomType + " SET occupied = ?, guest_email = ? " + "WHERE room_num = (SELECT room_num FROM " + newRoomType + " WHERE room_num BETWEEN 1 AND 10 AND occupied = 0 AND guest_email IS NULL " + "LIMIT 1)");) {
+                try(PreparedStatement prst = con.prepareStatement("UPDATE " + newRoomType + " SET occupied = ?, guest_email = ? " + "WHERE room_num = (SELECT room_num FROM " + newRoomType + " WHERE room_num BETWEEN 1 AND 10 AND occupied = 0 AND guest_email IS NULL " + "LIMIT 1)")) {
                     prst.setBoolean(1, newReservation.getOccupancy());
                     prst.setString(2, newReservation.getGuest().getEmail());
                     prst.executeUpdate();
@@ -164,49 +153,32 @@ public class ReservationManager {
                 }
             }
         }
-
         catch(SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 
     public void addReservation(Reservation reservations) {
-    
-            try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
-                
-                // inserting into db
-                try(PreparedStatement prst = con.prepareStatement("INSERT INTO Reservation(email, name, partySize, checkIn, checkOut, Room_Type) VALUES(?, ?, ?, ?, ?, ?);")) {
-                    prst.setString(1, reservations.getGuest().getEmail());
-                    prst.setString(2, reservations.getGuest().getName());
-                    prst.setInt(3, reservations.getGuest().getPartySize());
-                    prst.setString(4, reservations.getCheckIn());
-                    prst.setString(5, reservations.getCheckOut());
-                    prst.setString(6,reservations.getRoom().getRoomType());
-                    prst.executeUpdate();
-                }
+        try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
 
-                // Updating room db
-                try(PreparedStatement prst2 = con.prepareStatement("UPDATE " + reservations.getRoom().getRoomType() + " SET occupied = ?, guest_email = ? " + "WHERE room_num = (SELECT room_num FROM " + reservations.getRoom().getRoomType() + " WHERE room_num BETWEEN 1 AND 10 AND occupied = 0 AND guest_email IS NULL " + "LIMIT 1)");){
-                    prst2.setBoolean(1, true);
-                    prst2.setString(2, reservations.getGuest().getEmail());
-                    prst2.executeUpdate();
-                    System.out.println("Reservation added.");
-                }
-
-                // add payment to db
-                // add Payment payment as a parameter
-                /*
-                try(PreparedStatement prst3 = con.prepareStatement("INSERT INTO Payment(paymentId, method, amount, date, status) VALUES(?, ?, ?, ?, ?);)")) {
-                    prst3.setString(reservations.getGuest().getEmail());
-                    prst3.setString(2, payment.getMethod());
-                    prst3.setDouble(3, payment.getAmount());
-                    prst3.setString(4, payment.getDate());
-                    prst3.setString(5, payment.getStatus());
-                    prst3.executeUpdate();
-                }
-                 */
+            // inserting into db
+            try(PreparedStatement prst = con.prepareStatement("INSERT INTO Reservation(email, name, partySize, checkIn, checkOut, Room_Type) VALUES(?, ?, ?, ?, ?, ?);")) {
+                prst.setString(1, reservations.getGuest().getEmail());
+                prst.setString(2, reservations.getGuest().getName());
+                prst.setInt(3, reservations.getGuest().getPartySize());
+                prst.setString(4, reservations.getCheckIn());
+                prst.setString(5, reservations.getCheckOut());
+                prst.setString(6,reservations.getRoom().getRoomType());
+                prst.executeUpdate();
             }
-            
+            // Updating room db
+            try(PreparedStatement prst2 = con.prepareStatement("UPDATE " + reservations.getRoom().getRoomType() + " SET occupied = ?, guest_email = ? " + "WHERE room_num = (SELECT room_num FROM " + reservations.getRoom().getRoomType() + " WHERE room_num BETWEEN 1 AND 10 AND occupied = 0 AND guest_email IS NULL " + "LIMIT 1)")){
+                prst2.setBoolean(1, true);
+                prst2.setString(2, reservations.getGuest().getEmail());
+                prst2.executeUpdate();
+                System.out.println("Reservation added.");
+            }
+        }
         catch (SQLException e) {
             System.out.println("Unable to make reservation. " + e.getMessage());
             e.printStackTrace();
