@@ -24,12 +24,12 @@ public class MenuController {
     Payment payment;
     
     public void logout(ActionEvent event) throws IOException{
-             root = FXMLLoader.load(getClass().getResource("home.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-             scene = new Scene(root, 800, 600);
-            scene.getStylesheets().add(
-            getClass().getResource("/frontend/home.css").toExternalForm());
-            stage.setScene(scene);
+        root = FXMLLoader.load(getClass().getResource("home.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root, 800, 600);
+        scene.getStylesheets().add(
+        getClass().getResource("/frontend/home.css").toExternalForm());
+        stage.setScene(scene);
 
         stage.show();
     }

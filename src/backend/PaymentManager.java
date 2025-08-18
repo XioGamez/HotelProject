@@ -77,15 +77,14 @@ public class PaymentManager {
 
             try (ResultSet rs = prst.executeQuery()) {
                 if (rs.next()) {
-                    String method = rs.getString("payment_method");   // may be null
-                    String card   = rs.getString("card_num");         // may be null
+                    String method = rs.getString("payment_method");   
+                    String card   = rs.getString("card_num");         
 
                     if ("card".equalsIgnoreCase(method)) {
-                        return new Payment(guest, "card", card);      // ok if card is null—adjust if needed
+                        return new Payment(guest, "card", card);      
                     } else if ("cash".equalsIgnoreCase(method)) {
                         return new Payment(guest, "cash");
                     } else {
-                        // unknown or NULL → default
                         return new Payment(guest, "cash");
                     }
                 } else {
