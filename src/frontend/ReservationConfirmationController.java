@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ReservationConfirmationContoller {
+public class ReservationConfirmationController {
     private Stage stage;
     private Scene scene;
 

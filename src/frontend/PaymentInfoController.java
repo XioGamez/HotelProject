@@ -2,9 +2,7 @@ package frontend;
 
 import java.io.IOException;
 
-import backend.Guest;
-import backend.Payment;
-import backend.PaymentManager;
+import backend.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,18 +52,20 @@ public class PaymentInfoController {
     public void setGuest(Guest guest) {
         this.guest = guest;
     }
+
     public void finalizePaymentInfo() {
         if(cardButton.isSelected()) {
-            this.payment = new Payment(guest,"card", cardNumText.getText());
+            this.payment = new Payment(guest,"Card", cardNumText.getText());
             PaymentManager p = new PaymentManager();
-            p.addPayment(payment); 
+            p.addPayment(payment);
         }
         else if(cashButton.isSelected()) {
-            this.payment = new Payment(guest,"cash");
+            this.payment = new Payment(guest,"Cash");
             PaymentManager p = new PaymentManager();
-            p.addPayment(payment); 
+            p.addPayment(payment);
         }
     }
+
     public void addPayment(ActionEvent event) throws IOException {
             finalizePaymentInfo();
             

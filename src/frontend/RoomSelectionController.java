@@ -50,8 +50,6 @@ public class RoomSelectionController {
     DatePicker check_Out;
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-    String checkInText;
-    String checkOutText;
 
     @FXML
     public void initialize() {
@@ -79,7 +77,7 @@ public class RoomSelectionController {
                     display("Please pick a check-in and check-out date");
                 }
                 else {
-                    display("Your total cost for a reservation with Deluxe room type from " + getCheckIn() + " to " + getCheckOut() + " is " +"$" + calculatePrice(200)  );
+                    display("Your total cost for a reservation with Suite room type from " + getCheckIn() + " to " + getCheckOut() + " is " +"$" + calculatePrice(200)  );
                 }
             }
 
@@ -110,7 +108,7 @@ public class RoomSelectionController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationConfirmation.fxml"));
             root = loader.load();
 
-            ReservationConfirmationContoller rc = loader.getController();
+            ReservationConfirmationController rc = loader.getController();
             rc.setGuest(this.guest);
             rc.setPayment(this.payment);
 
@@ -123,7 +121,6 @@ public class RoomSelectionController {
         else {
             promptLabel.setText("Please enter all required information");
         }
-        
     }
 
     // Check to see if all required information has been entered
@@ -133,6 +130,7 @@ public class RoomSelectionController {
         }
         return false;
     }
+
     // Finalize all reservation related information
     public void finalizeReservation() {
         if(standardButton.isSelected()) {
@@ -157,7 +155,7 @@ public class RoomSelectionController {
 
     public void backButton(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu.fxml"));
-        Parent root = loader.load();
+        root = loader.load();
 
         MenuController mc = loader.getController();
         mc.setGuest(this.guest);
@@ -169,10 +167,6 @@ public class RoomSelectionController {
         stage.show();
     }
 
-    public void print() {
-        System.out.println(payment.getPaymentID() + " " + payment.getMethod() + " " + payment.getCardNum());
-        System.out.println(payment.getAmount());
-    }
     public void display(String str) {
         promptLabel.setText(str);
     }
@@ -213,6 +207,4 @@ public class RoomSelectionController {
         return Integer.parseInt(partySizeText.getText());
         
     }
-
-    
 }

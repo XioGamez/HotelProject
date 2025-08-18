@@ -113,7 +113,7 @@ public class DisplayController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationConfirmation.fxml"));
             root = loader.load();
 
-            ReservationConfirmationContoller rc = loader.getController();
+            ReservationConfirmationController rc = loader.getController();
             rc.setGuest(this.guest);
             rc.setPayment(this.payment);
 
@@ -161,7 +161,7 @@ public class DisplayController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationConfirmation.fxml"));
         root = loader.load();
 
-        ReservationConfirmationContoller rc = loader.getController();
+        ReservationConfirmationController rc = loader.getController();
         rc.setGuest(this.guest);
         rc.setPayment(this.payment);
 
