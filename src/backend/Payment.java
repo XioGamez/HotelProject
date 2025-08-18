@@ -1,7 +1,7 @@
 package backend;
-public class Payment {
-    private String paymentId;
-    private String method;
+public abstract class Payment {
+    private final String paymentId;
+    private final String method;
     private double amount;
     private String cardNum;
     private String room_type;
@@ -22,9 +22,9 @@ public class Payment {
     public String getPaymentID() {
         return paymentId;
     }
-    public String getMethod() {
-        return method;
-    }
+
+    public abstract String getMethod();
+
     public void setAmount(double a) {
         this.amount = a;
     }
