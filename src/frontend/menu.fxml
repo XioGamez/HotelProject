@@ -23,11 +23,11 @@
             <Font name="Comic Sans MS Bold" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="229.0" layoutY="275.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="118.0" style="-fx-background-color: pink; -fx-background-radius: 15;" text="Leave A Review">
+      <Button layoutX="229.0" layoutY="302.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="118.0" style="-fx-background-color: pink; -fx-background-radius: 15;" text="Leave A Review">
          <font>
             <Font name="Comic Sans MS Bold" size="13.0" />
          </font></Button>
-      <Button layoutX="204.0" layoutY="186.0" mnemonicParsing="false" onAction="#search" prefHeight="28.0" prefWidth="170.0" style="-fx-background-color: pink; -fx-background-radius: 15;" text="Search for Reservation">
+      <Button layoutX="203.0" layoutY="164.0" mnemonicParsing="false" onAction="#search" prefHeight="28.0" prefWidth="170.0" style="-fx-background-color: pink; -fx-background-radius: 15;" text="Search for Reservation">
          <font>
             <Font name="Comic Sans MS Bold" size="13.0" />
          </font>
@@ -36,5 +36,10 @@
          <font>
             <Font name="Comic Sans MS Bold" size="13.0" />
          </font></Button>
+      <Button layoutX="224.0" layoutY="234.0" mnemonicParsing="false" onAction="#reservationInfo" style="-fx-background-color: pink; -fx-background-radius: 15;" text="Reservation Info">
+         <font>
+            <Font name="Comic Sans MS Bold" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
