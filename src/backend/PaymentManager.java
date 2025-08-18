@@ -80,14 +80,14 @@ public class PaymentManager {
                         String card = rs.getString("card_num");         // may be null
 
                         if ("card".equalsIgnoreCase(method))
-                            return new Payment(guest, "card", card);      // ok if card is null—adjust if needed
+                            return new Payment(guest, "Card", card);      // ok if card is null—adjust if needed
                     }
                 }
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return new Payment(guest, "cash");
+        return new Payment(guest, "Cash");
     }
 
     public void processCardPayment (Payment payment)  {
