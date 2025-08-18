@@ -24,13 +24,12 @@ public class PrintInfoController {
     Label printInfo;
 
     public void getInfo() {
-        if(reservation == null) {
-            printInfo.setText("No reservation information found for " + guest.getName());
+        if(reservation != null) {
+            ReservationManager rm = new ReservationManager();
+            String info = rm.printReservationInfo(reservation);
+            printInfo.setText(info);
         }
-
-        ReservationManager rm = new ReservationManager();
-        String info = rm.printReservationInfo(reservation);
-        printInfo.setText(info);
+        printInfo.setText("No reservation information found for " + guest.getName());
     }
 
     public void backButton(ActionEvent event) throws IOException {
