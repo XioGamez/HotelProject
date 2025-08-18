@@ -70,6 +70,48 @@ public class ReservationManager {
         return null;
     }
 
+    public Reservation getReservation(Guest guest)  {
+
+        try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
+            Hotel room;
+
+            try(PreparedStatement prst = con.prepareStatement("SELECT * FROM Reservation WHERE email = ?")) {
+                prst.setString(1,guest.getEmail());
+
+                try(ResultSet rs = prst.executeQuery()) {
+                    if(rs.next()) {
+                        if(rs.getString("Room_Type").equals("Standard")) {
+                            room = new Standard();
+                            guest.setPartySize(rs.getInt("PartySize"));
+                            String checkIn = rs.getString("checkIn");
+                            String checkOut = rs.getString("checkOut");
+                            return new Reservation(guest, room, checkIn,checkOut);
+                        }
+                        if(rs.getString("Room_Type").equals("Deluxe"))  {
+                            room = new Deluxe();
+                            guest.setPartySize(rs.getInt("PartySize"));
+                            String checkIn = rs.getString("checkIn");
+                            String checkOut = rs.getString("checkOut");
+                            return new Reservation(guest, room, checkIn,checkOut);
+                        }
+                        else {
+                            room = new Suite();
+                            guest.setPartySize(rs.getInt("PartySize"));
+                            String checkIn = rs.getString("checkIn");
+                            String checkOut = rs.getString("checkOut");
+                            return new Reservation(guest, room, checkIn,checkOut);
+                        }
+                    }
+
+                }
+            }
+        }
+        catch(SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
     public void updateReservation(Reservation newReservation, Reservation oldReservation)  {
 
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
