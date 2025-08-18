@@ -33,10 +33,14 @@ public class LoginController {
     Login log;
     Payment payment;
     public void back(ActionEvent event) throws IOException{
-            Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+            root = FXMLLoader.load(getClass().getResource("home.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
+            scene = new Scene(root, 800, 600);
+            scene.getStylesheets().add(
+            getClass().getResource("/frontend/home.css").toExternalForm());
             stage.setScene(scene);
+            stage.sizeToScene(); //LC: shrinks window to scene's preffered size
+
             stage.show();
     }
 
@@ -60,8 +64,6 @@ public class LoginController {
                 stage.setScene(scene);
                 stage.show();
             }
-            else { 
-                printText.setText("Wrong information");
-            }
-        }
     }
+}
+
