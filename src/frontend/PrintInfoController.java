@@ -28,8 +28,8 @@ public class PrintInfoController {
             ReservationManager rm = new ReservationManager();
             String info = rm.printReservationInfo(reservation);
             printInfo.setText(info);
-        }
-        printInfo.setText("No reservation information found for " + guest.getName());
+        } else
+            printInfo.setText("No reservation information found for " + guest.getName());
     }
 
     public void backButton(ActionEvent event) throws IOException {
