@@ -62,9 +62,3 @@ public class LoginController {
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
-            }
-            else { 
-                printText.setText("Wrong information");
-            }
-        }
-    }
