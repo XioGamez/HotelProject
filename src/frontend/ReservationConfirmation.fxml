@@ -7,18 +7,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.ReservationConfirmationContoller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.ReservationConfirmationController">
    <children>
       <ImageView fitHeight="406.0" fitWidth="606.0" layoutX="-3.0" layoutY="-1.0" pickOnBounds="true">
          <image>
             <Image url="@../resources/images/sunset.jpeg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="144.0" layoutY="38.0" prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane layoutX="138.0" layoutY="30.0" prefHeight="53.0" prefWidth="378.0">
          <children>
-            <AnchorPane layoutX="-23.0" layoutY="-10.0" prefHeight="55.0" prefWidth="377.0" style="-fx-background-color: white; -fx-background-radius: 45;">
+            <AnchorPane layoutX="-68.0" layoutY="-11.0" prefHeight="48.0" prefWidth="458.0" style="-fx-background-color: white; -fx-background-radius: 45;">
                <children>
-                  <Label layoutX="14.0" prefHeight="50.0" prefWidth="349.0" text="Your Reservation is confirmed" textFill="#e3624b">
+                  <Label layoutX="25.0" prefHeight="50.0" prefWidth="409.0" text="Your Reservation is now confirmed" textFill="#e3624b">
                      <font>
                         <Font name="Brush Script MT Italic" size="36.0" />
                      </font>
@@ -27,7 +27,13 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <Button layoutX="321.0" layoutY="238.0" mnemonicParsing="false" onAction="#logOutButton" text="Log Out" />
-      <Button layoutX="215.0" layoutY="238.0" mnemonicParsing="false" onAction="#menuButton" text="Menu" />
+      <Button layoutX="333.0" layoutY="202.0" mnemonicParsing="false" onAction="#logOutButton" style="-fx-background-color: pink; -fx-background-radius: 10;" text="Logout">
+         <font>
+            <Font name="Comic Sans MS Bold" size="14.0" />
+         </font></Button>
+      <Button layoutX="233.0" layoutY="202.0" mnemonicParsing="false" onAction="#menuButton" style="-fx-background-color: pink; -fx-background-radius: 10;" text="Menu">
+         <font>
+            <Font name="Comic Sans MS Bold" size="14.0" />
+         </font></Button>
    </children>
 </AnchorPane>

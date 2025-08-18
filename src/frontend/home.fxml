@@ -8,48 +8,49 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.HomeController">
-   <center>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+<BorderPane xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.HomeController">
+   <top>
+      <HBox alignment="CENTER" spacing="40.0" BorderPane.alignment="CENTER" style="-fx-padding:8; -fx-background-color: pink;">
          <children>
-            <ImageView fitHeight="408.0" fitWidth="600.0" layoutY="-2.0" opacity="0.7" pickOnBounds="true">
-               <image>
-                  <Image url="@../resources/images/beachflowers.jpeg" />
-               </image>
-            </ImageView>
-            <Button fx:id="loginMainButton" layoutX="277.0" layoutY="274.0" mnemonicParsing="false" onAction="#logIn" prefHeight="24.0" prefWidth="60.0" style="-fx-background-color: pink;" text="Login">
-               <font>
-                  <Font name="Comic Sans MS Bold" size="16.0" />
-               </font>
-            </Button>
-            <Button fx:id="signupMainButton" layoutX="267.0" layoutY="325.0" mnemonicParsing="false" onAction="#signUp" style="-fx-background-color: pink;" text="Sign Up">
-               <font>
-                  <Font name="Comic Sans MS Bold" size="16.0" />
-               </font>
-            </Button>
-            <VBox alignment="CENTER" spacing="10" />
-            <Label layoutX="86.0" layoutY="5.0" text="HOME" textFill="WHITE" underline="true">
+            <Label text="Book your stay with us!" textFill="WHITE" underline="true">
                <font>
                   <Font name="Comic Sans MS Bold" size="13.0" />
                </font>
             </Label>
-            <Label layoutX="260.0" layoutY="3.0" text="CONTACTS" textFill="WHITE" underline="true">
-               <font>
-                  <Font name="Comic Sans MS Bold" size="13.0" />
-               </font>
-            </Label>
-            <Label layoutX="460.0" layoutY="3.0" text="REVIEWS" textFill="WHITE" underline="true">
-               <font>
-                  <Font name="Comic Sans MS Bold" size="13.0" />
-               </font>
-            </Label>
-            <ImageView fx:id="logoImageView" fitHeight="208.0" fitWidth="245.0" layoutX="201.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/images/4Seasonslogofinal.png" />
-               </image>
-            </ImageView>
          </children>
-      </AnchorPane>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox alignment="CENTER" style="-fx-padding: 8; -fx-background-color: rgba(9, 182, 192, 0.88);">
+         <children>
+            <Label text=" Copyright (c) All Rights Reserved   •  Contact: (555) 123-4567  •  support@4seasons.com" textFill="WHITE" />
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <StackPane fx:id="centerStack" styleClass="hero" BorderPane.alignment="CENTER"> <!-- LC: StackPane to keep content centered and the background fills screen-->
+         <children>
+            <VBox alignment="CENTER" spacing="16.0"> <!-- LC: Centered logo + buttons -->
+               <ImageView fx:id="logoImageView" fitHeight="208.0" fitWidth="245.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../resources/images/4Seasonslogofinal.png" />
+                  </image>
+               </ImageView>
+               <Button fx:id="loginMainButton" text="Login" onAction="#logIn" style="-fx-background-color: pink;" >
+                  <font>
+                     <Font name="Comic Sans MS Bold" size="16.0" />
+                  </font>
+               </Button>
+               <Button fx:id="signupMainButton" text="Sign Up" onAction="#signUp" style="-fx-background-color: pink;" >
+                  <font>
+                     <Font name="Comic Sans MS Bold" size="16.0" />
+                  </font>
+               </Button>
+            </VBox>  
+         </children>
+      </StackPane>
    </center>
 </BorderPane>

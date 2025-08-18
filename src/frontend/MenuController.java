@@ -5,6 +5,8 @@ import java.util.EventObject;
 
 import backend.Guest;
 import backend.Payment;
+import backend.Reservation;
+import backend.ReservationManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,20 +24,16 @@ public class MenuController {
     
     Guest guest;
     Payment payment;
-    
-    public void logout(ActionEvent event) throws IOException{
-            Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-    }
 
-    public void setGuest(Guest guest) {
-        this.guest = guest;
-    }
-    public void setPayment(Payment payment) {
-        this.payment = payment;
+    public void logout(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("home.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root, 800, 600);
+        scene.getStylesheets().add(
+        getClass().getResource("/frontend/home.css").toExternalForm());
+        stage.setScene(scene);
+
+        stage.show();
     }
 
     public void search(ActionEvent event) throws IOException {
@@ -64,5 +62,30 @@ public class MenuController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void reservationInfo(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PrintInfo.fxml"));
+        root = loader.load();
+
+        PrintInfoController pic = loader.getController();
+        pic.setGuest(this.guest);
+        pic.setPayment(this.payment);
+
+        ReservationManager rm = new ReservationManager();
+        Reservation reservation = rm.getReservation(guest);
+        pic.setReservation(reservation);
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void setGuest(Guest guest) {
+        this.guest = guest;
+    }
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 }

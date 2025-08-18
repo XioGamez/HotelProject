@@ -16,10 +16,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import javafx.scene.layout.AnchorPane;
 
 public class HomeController {
     
@@ -30,10 +29,14 @@ public class HomeController {
     @FXML private Button   signupMainButton;
     @FXML private ImageView logoImageView;
 
+    //LC: responsive background sizing
+    @FXML private StackPane centerStack;
+
     @FXML
     public void initialize() {
+
         //LC: Staggered entrance animations
-        popFromBottom(logoImageView,   0); //LC: logo first
+        popFromBottom(logoImageView, 0); //LC: logo first
         popFromBottom(loginMainButton, 120); // then login
         popFromBottom(signupMainButton,240); // then signup
     }

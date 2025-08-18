@@ -16,15 +16,15 @@
             <Image url="@../resources/images/beachflowers.jpeg" />
          </image>
       </ImageView>
-      <Label alignment="TOP_LEFT" layoutX="72.0" layoutY="5.0" text="HOME" textFill="#fffbfb">
+      <Label alignment="TOP_LEFT" layoutX="72.0" layoutY="5.0" text="HOME" textFill="#fffbfb" underline="true">
          <font>
             <Font name="Comic Sans MS Bold" size="13.0" />
          </font></Label>
-      <Label alignment="TOP_CENTER" layoutX="269.0" layoutY="5.0" text="CONTACT" textFill="WHITE">
+      <Label alignment="TOP_CENTER" layoutX="269.0" layoutY="5.0" text="CONTACT" textFill="WHITE" underline="true">
          <font>
             <Font name="Comic Sans MS Bold" size="13.0" />
          </font></Label>
-      <Label alignment="TOP_RIGHT" layoutX="489.0" layoutY="5.0" text="REVIEWS" textFill="WHITE">
+      <Label alignment="TOP_RIGHT" layoutX="489.0" layoutY="5.0" text="REVIEWS" textFill="WHITE" underline="true">
          <font>
             <Font name="Comic Sans MS Bold" size="13.0" />
          </font>
@@ -51,7 +51,10 @@
             <Label layoutX="112.0" layoutY="317.0" text="Forgot password?" textFill="#a81cff" />
          </children>
       </AnchorPane>
-      <Button layoutX="14.0" layoutY="341.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="94.0" text="back" />
+      <Button layoutX="14.0" layoutY="341.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: pink; -fx-background-radius: 15;" text="&lt;    Back">
+         <font>
+            <Font name="Comic Sans MS Bold" size="13.0" />
+         </font></Button>
    </children>
    <cursor>
       <Cursor fx:constant="OPEN_HAND" />
