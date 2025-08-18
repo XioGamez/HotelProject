@@ -70,23 +70,24 @@ public class PaymentManager {
     }*/
 
     public Payment getPaymentInfo(Guest guest) {
-        try (Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
-            try (PreparedStatement prst = con.prepareStatement("SELECT payment_method, card_num FROM Guest WHERE email = ?")) {
+        try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
+            try(PreparedStatement prst = con.prepareStatement("SELECT payment_method, card_num FROM Guest WHERE email = ?")) {
                 prst.setString(1, guest.getEmail());
-                ResultSet rs = prst.executeQuery();
 
-                if (rs.next()) {
-                    String method = rs.getString("payment_method");
-                    String card = rs.getString("card_num");
+                try (ResultSet rs = prst.executeQuery()) {
+                    if (rs.next()) {
+                        String method = rs.getString("payment_method");   // may be null
+                        String card = rs.getString("card_num");         // may be null
 
-                    if ("card".equalsIgnoreCase(method))
-                        return new Card(guest, card);
+                        if ("card".equalsIgnoreCase(method))
+                            return new Payment(guest, "card", card);      // ok if card is null—adjust if needed
+                    }
                 }
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return new Cash(guest);
+        return new Payment(guest, "cash");
     }
 
     public void processCardPayment (Payment payment)  {

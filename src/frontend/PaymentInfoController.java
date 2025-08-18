@@ -52,18 +52,20 @@ public class PaymentInfoController {
     public void setGuest(Guest guest) {
         this.guest = guest;
     }
+
     public void finalizePaymentInfo() {
         if(cardButton.isSelected()) {
-            this.payment = new Card(guest, cardNumText.getText());
+            this.payment = new Payment(guest,"card", cardNumText.getText());
             PaymentManager p = new PaymentManager();
-            p.addPayment(payment); 
+            p.addPayment(payment);
         }
         else if(cashButton.isSelected()) {
-            this.payment = new Cash(guest);
+            this.payment = new Payment(guest,"cash");
             PaymentManager p = new PaymentManager();
-            p.addPayment(payment); 
+            p.addPayment(payment);
         }
     }
+
     public void addPayment(ActionEvent event) throws IOException {
             finalizePaymentInfo();
             
