@@ -43,10 +43,6 @@
                <font>
                   <Font name="Comic Sans MS Bold" size="14.0" />
                </font></Button>
-            <Button layoutX="517.0" layoutY="399.0" mnemonicParsing="false" onAction="#print" style="-fx-background-color: pink;" text="Print">
-               <font>
-                  <Font name="Comic Sans MS Bold" size="14.0" />
-               </font></Button>
             <Button layoutX="597.0" layoutY="398.0" mnemonicParsing="false" onAction="#finalizeReservation" style="-fx-background-color: pink;" text="Finalize">
                <font>
                   <Font name="Comic Sans MS Bold" size="14.0" />
