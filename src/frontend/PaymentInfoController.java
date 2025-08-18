@@ -55,12 +55,12 @@ public class PaymentInfoController {
 
     public void finalizePaymentInfo() {
         if(cardButton.isSelected()) {
-            this.payment = new Payment(guest,"card", cardNumText.getText());
+            this.payment = new Payment(guest,"Card", cardNumText.getText());
             PaymentManager p = new PaymentManager();
             p.addPayment(payment);
         }
         else if(cashButton.isSelected()) {
-            this.payment = new Payment(guest,"cash");
+            this.payment = new Payment(guest,"Cash");
             PaymentManager p = new PaymentManager();
             p.addPayment(payment);
         }
