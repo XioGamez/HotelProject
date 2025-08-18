@@ -10,44 +10,70 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.PaymentInfoController">
-   <children>
-      <ImageView fitHeight="407.0" fitWidth="607.0" layoutX="-6.0" layoutY="-2.0" opacity="0.54" pickOnBounds="true">
-         <image>
-            <Image url="@../resources/images/beachscene.jpeg" />
-         </image>
-      </ImageView>
-      <Label layoutX="21.0" layoutY="14.0" prefHeight="38.0" prefWidth="328.0" text="Please enter your payment info:">
-         <font>
-            <Font name="Comic Sans MS Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="14.0" layoutY="95.0" text="Payment method:">
-         <font>
-            <Font name="Comic Sans MS Bold" size="14.0" />
-         </font>
-      </Label>
-      <RadioButton fx:id="cardButton" layoutX="198.0" layoutY="95.0" mnemonicParsing="false" text="Card">
-         <font>
-            <Font size="14.0" />
-         </font>
-         <toggleGroup>
-            <ToggleGroup fx:id="toggleGroup" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton fx:id="cashButton" layoutX="440.0" layoutY="95.0" mnemonicParsing="false" text="Cash" toggleGroup="$toggleGroup">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </RadioButton>
-      <Label fx:id="cardLabel" layoutX="13.0" layoutY="178.0" prefHeight="20.0" prefWidth="118.0" text="Card number:">
-         <font>
-            <Font name="Comic Sans MS Bold" size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="cardNumText" layoutX="176.0" layoutY="175.0" />
-      <ImageView fitHeight="38.0" fitWidth="127" />
-      <Button layoutX="284.0" layoutY="339.0" mnemonicParsing="false" onAction="#addPayment" prefHeight="26.0" prefWidth="117.0" text="confirm" />
-      <Label fx:id="textLabel" layoutX="21.0" layoutY="277.0" prefHeight="68.0" prefWidth="238.0" text="Label" />
-      </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="601.0"
+            xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="frontend.PaymentInfoController">
+    <children>
+        <ImageView fitHeight="407.0" fitWidth="607.0" layoutX="-6.0" layoutY="-2.0" opacity="0.54" pickOnBounds="true">
+            <image>
+                <Image url="@../resources/images/beachscene.jpeg"/>
+            </image>
+        </ImageView>
+
+        <Label layoutX="21.0" layoutY="14.0" prefHeight="38.0" prefWidth="328.0" text="Please enter your payment info:">
+            <font>
+                <Font name="Comic Sans MS Bold" size="18.0"/>
+            </font>
+        </Label>
+
+        <Label layoutX="14.0" layoutY="95.0" text="Payment method:">
+            <font>
+                <Font name="Comic Sans MS Bold" size="14.0"/>
+            </font>
+        </Label>
+
+        <RadioButton fx:id="cardButton" layoutX="198.0" layoutY="95.0" mnemonicParsing="false" text="Card">
+            <font>
+                <Font size="14.0"/>
+            </font>
+            <toggleGroup>
+                <ToggleGroup fx:id="toggleGroup"/>
+            </toggleGroup>
+        </RadioButton>
+
+        <RadioButton fx:id="cashButton" layoutX="440.0" layoutY="95.0" mnemonicParsing="false" text="Cash" toggleGroup="$toggleGroup">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </RadioButton>
+
+        <Label fx:id="cardLabel" layoutX="13.0" layoutY="178.0" prefHeight="20.0" prefWidth="118.0" text="Card number:">
+            <font>
+                <Font name="Comic Sans MS Bold" size="14.0"/>
+            </font>
+        </Label>
+
+        <TextField fx:id="cardNumText" layoutX="176.0" layoutY="175.0"/>
+
+        <ImageView fitHeight="38.0" fitWidth="127.0" layoutX="176.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../resources/images/cclogos.png"/>
+            </image>
+        </ImageView>
+
+        <Label fx:id="textLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="245.0"
+               prefHeight="106.0" prefWidth="398.0" text="Label" wrapText="true">
+            <font>
+                <Font name="Comic Sans MS Bold" size="12.0"/>
+            </font>
+        </Label>
+
+        <Button layoutX="267.0" layoutY="351.0" mnemonicParsing="false" onAction="#addPayment"
+                style="-fx-background-color: pink;" text="Submit">
+            <font>
+                <Font name="Comic Sans MS Bold" size="14.0"/>
+            </font>
+        </Button>
+    </children>
 </AnchorPane>

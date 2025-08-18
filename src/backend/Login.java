@@ -13,7 +13,10 @@ public class Login {
         this.username = username;
         this.password = password;
     }
-
+    
+    public Login(String s1) {
+        this.username = s1;
+    }
     public void setUsername(String u) {
         this.username = u;
     }

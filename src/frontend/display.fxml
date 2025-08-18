@@ -10,47 +10,78 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="572.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.DisplayController">
    <children>
-      <Label layoutX="327.0" layoutY="14.0" text="Make your changes">
+      <Label layoutX="327.0" layoutY="14.0" prefHeight="25.0" prefWidth="186.0" text="Make your changes">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="Comic Sans MS Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="57.0" layoutY="118.0" text="Room Type:" />
-      <Label layoutX="51.0" layoutY="183.0" text="Check In Date:" />
-      <Label layoutX="46.0" layoutY="259.0" text="Check Out Date:" />
-      <Label layoutX="183.0" layoutY="61.0" text="Old">
+      <Label layoutX="183.0" layoutY="61.0" prefHeight="23.0" prefWidth="32.0" text="Old">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="Comic Sans MS Bold" size="18.0" />
          </font></Label>
-      <Label layoutX="589.0" layoutY="61.0" text="New">
+      <Label layoutX="589.0" layoutY="61.0" prefHeight="23.0" prefWidth="51.0" text="New">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="Comic Sans MS Bold" size="18.0" />
          </font></Label>
-      <Button layoutX="222.0" layoutY="382.0" mnemonicParsing="false" onAction="#update" text="Update Reservation" />
-      <Label fx:id="oldRoomLabel" layoutX="160.0" layoutY="258.0" prefHeight="18.0" prefWidth="122.0">
+      <Label layoutX="46.0" layoutY="118.0" text="Room Type:">
          <font>
-            <Font size="18.0" />
+            <Font name="Comic Sans MS Bold" size="14.0" />
          </font></Label>
-      <Label fx:id="oldCheckInLabel" layoutX="153.0" layoutY="118.0" prefHeight="18.0" prefWidth="137.0">
+      <Label fx:id="oldCheckInLabel" layoutX="167.0" layoutY="116.0" prefHeight="18.0" prefWidth="137.0">
          <font>
-            <Font name="System Bold" size="18.0" />
-         </font></Label>
-      <Label fx:id="oldCheckOutLabel" layoutX="159.0" layoutY="182.0" prefHeight="18.0" prefWidth="138.0">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font></Label>
-      <Button layoutX="224.0" layoutY="472.0" mnemonicParsing="false" onAction="#CancelReservation" text="Cancel Reservation" />
-      <Button layoutX="46.0" layoutY="509.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="77.0" text="back" />
+            <Font name="Comic Sans MS Bold" size="18.0" />
+         </font>
+      </Label>
       <RadioButton fx:id="standardButton" layoutX="429.0" layoutY="118.0" mnemonicParsing="false" text="Standard">
          <toggleGroup>
             <ToggleGroup fx:id="toggleGroup" />
          </toggleGroup>
+         <font>
+            <Font name="Comic Sans MS Bold" size="14.0" />
+         </font>
       </RadioButton>
-      <RadioButton fx:id="deluxeButton" layoutX="570.0" layoutY="118.0" mnemonicParsing="false" text="Deluxe" toggleGroup="$toggleGroup" />
-      <RadioButton fx:id="suiteButton" layoutX="712.0" layoutY="118.0" mnemonicParsing="false" text="Suite" toggleGroup="$toggleGroup" />
-      <DatePicker fx:id="check_In" layoutX="511.0" layoutY="179.0" promptText="check in date" />
-      <DatePicker fx:id="check_Out" layoutX="511.0" layoutY="254.0" promptText="check out date" />
+      <RadioButton fx:id="deluxeButton" layoutX="570.0" layoutY="118.0" mnemonicParsing="false" text="Deluxe" toggleGroup="$toggleGroup">
+         <font>
+            <Font name="Comic Sans MS Bold" size="14.0" />
+         </font></RadioButton>
+      <RadioButton fx:id="suiteButton" layoutX="712.0" layoutY="118.0" mnemonicParsing="false" text="Suite" toggleGroup="$toggleGroup">
+         <font>
+            <Font name="Comic Sans MS Bold" size="14.0" />
+         </font></RadioButton>
+      <Label layoutX="44.0" layoutY="184.0" text="Check-in Date:">
+         <font>
+            <Font name="Comic Sans MS Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="oldCheckOutLabel" layoutX="167.0" layoutY="182.0" prefHeight="18.0" prefWidth="138.0">
+         <font>
+            <Font name="Comic Sans MS Bold" size="18.0" />
+         </font></Label>
+      <DatePicker fx:id="check_In" layoutX="511.0" layoutY="179.0" promptText="Check-in date" />
+      <Label layoutX="46.0" layoutY="259.0" text="Check-out Date:">
+         <font>
+            <Font name="Comic Sans MS Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="oldRoomLabel" layoutX="167.0" layoutY="258.0" prefHeight="18.0" prefWidth="122.0">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <DatePicker fx:id="check_Out" layoutX="511.0" layoutY="254.0" promptText="Check-out date" />
+      <Button layoutX="222.0" layoutY="382.0" mnemonicParsing="false" onAction="#update" style="-fx-background-color: pink; -fx-background-radius: 15;" text="Update Reservation">
+         <font>
+            <Font name="Comic Sans MS Bold" size="14.0" />
+         </font></Button>
+      <Button layoutX="225.0" layoutY="442.0" mnemonicParsing="false" onAction="#CancelReservation" style="-fx-background-color: pink; -fx-background-radius: 15;" text="Cancel Reservation">
+         <font>
+            <Font name="Comic Sans MS Bold" size="14.0" />
+         </font></Button>
+      <Button layoutX="46.0" layoutY="509.0" mnemonicParsing="false" onAction="#back" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: pink; -fx-background-radius: 15;" text="&lt;   Back">
+         <font>
+            <Font name="Comic Sans MS Bold" size="14.0" />
+         </font></Button>
+      <Button layoutX="267.0" layoutY="509.0" mnemonicParsing="false" onAction="#print" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: pink; -fx-background-radius: 15;" text="Print">
+         <font>
+            <Font name="Comic Sans MS Bold" size="14.0" />
+         </font></Button>
       <Label fx:id="promptLabel" layoutX="436.0" layoutY="292.0" prefHeight="206.0" prefWidth="343.0" wrapText="true" />
-      <Button layoutX="410.0" layoutY="523.0" mnemonicParsing="false" onAction="#print" text="print" />
    </children>
 </AnchorPane>

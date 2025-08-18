@@ -1,0 +1,6 @@
+.hero {
+    -fx-background-image: url("beachhome.jpeg");
+    -fx-background-size: cover; /* LC: fills area and gets rid of white bars */
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}

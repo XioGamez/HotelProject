@@ -84,5 +84,24 @@ public class GuestManager {
         }
         return null;
     }
+
+    public Login getLogin(Guest guest) {
+        try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
+
+            try(PreparedStatement prst = con.prepareStatement("SELECT * FROM login WHERE email = ?")) {
+                prst.setString(1,guest.getEmail());
+
+                try(ResultSet rs = prst.executeQuery()) {
+                    if(rs.next()) {
+                        return new Login(rs.getString("username"));
+                    }
+                }
+            }
+        }
+        catch(SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
     
 }
