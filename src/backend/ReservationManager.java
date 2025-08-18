@@ -171,7 +171,9 @@ public class ReservationManager {
         }
     }
 
-    public void printReservationInfo(Reservation reservations) {
+    public String printReservationInfo (Reservation reservations) {
+        StringBuilder info = new StringBuilder();
+
         try(Connection con = DriverManager.getConnection("jdbc:sqlite:hotel.db")) {
             PreparedStatement prst = con.prepareStatement("SELECT * FROM Reservation WHERE email = ?");
             prst.setString(1, reservations.getGuest().getEmail());
@@ -185,36 +187,36 @@ public class ReservationManager {
             int partySize = rs.getInt("partySize");
             String checkIn = rs.getString("checkIn");
             String checkOut = rs.getString("checkOut");
-            String roomType = rs.getString("Rooom_Type");
+            String roomType = rs.getString("Room_Type");
 
             prst = con.prepareStatement("SELECT * FROM Payment WHERE guest_email = ?");
             prst.setString(1, reservations.getGuest().getEmail());
             ResultSet rs2 = prst.executeQuery();
 
-            String amount = rs.getString("amount_paid");
+            double price = rs2.getDouble("price");
+            String amount = rs2.getString("amount_paid");
             boolean paid = rs2.getBoolean("paid");
             String method = rs2.getString("method");
 
-            LocalDate checkInDate = LocalDate.parse(checkIn);
-            LocalDate checkOutDate = LocalDate.parse(checkOut);
-            long nights = ChronoUnit.DAYS.between(checkInDate, checkOutDate);
-
-            System.out.println(name);
-            System.out.println(email);
-            System.out.println(partySize);
-            System.out.println(roomType);
-            System.out.println(checkInDate);
-            System.out.println(checkOutDate);
-            System.out.println(amount);
-            System.out.println(paid);
-            System.out.println(method);
+            info.append("Name: ").append(name).append("\n")
+                    .append("Email: ").append(email).append("\n")
+                    .append("Party Size: ").append(partySize).append("\n")
+                    .append("Room Type: ").append(roomType).append("\n")
+                    .append("Check-In: ").append(checkIn).append("\n")
+                    .append("Check-Out: ").append(checkOut).append("\n")
+                    .append("Price: ").append(price).append("\n")
+                    .append("Amount Paid: ").append(amount).append("\n")
+                    .append("Paid: ").append(paid).append("\n")
+                    .append("Payment Method: ").append(method).append("\n");
 
             rs.close();
+            rs2.close();
             prst.close();
         }
         catch (SQLException e) {
             System.out.println("Unable to print reservation info. " + e.getMessage());
             e.printStackTrace();
         }
+        return info.toString();
     }
 }
