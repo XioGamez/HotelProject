@@ -72,4 +72,9 @@ public class SignupController {
             else {
                 labelText.setText("You are already a member");
             }
- 
+        }
+        else {
+            labelText.setText("Please enter all required information");
+        }      
+    }
+}

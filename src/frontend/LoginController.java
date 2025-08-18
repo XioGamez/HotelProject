@@ -39,6 +39,7 @@ public class LoginController {
             scene.getStylesheets().add(
             getClass().getResource("/frontend/home.css").toExternalForm());
             stage.setScene(scene);
+            stage.sizeToScene(); //LC: shrinks window to scene's preffered size
 
             stage.show();
     }
@@ -62,3 +63,7 @@ public class LoginController {
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
+            }
+    }
+}
+
