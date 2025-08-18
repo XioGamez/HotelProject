@@ -3,7 +3,7 @@ bin/
 .idea
 HotelProject.iml
 out/
-hotel
+hotel.db
 JavaDoc_backend
 JavaDoc_frontend
 .DS_Store

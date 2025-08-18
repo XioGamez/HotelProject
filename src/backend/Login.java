@@ -13,28 +13,20 @@ public class Login {
         this.username = username;
         this.password = password;
     }
-    
-    public Login(String s1) {
-        this.username = s1;
-    }
-    public void setUsername(String u) {
-        this.username = u;
-    }
-
-    public void setPassword(String p) {
-        this.password = p;
+    public Login(String username) {
+        this.username = username;
     }
 
     public int getHashcode() {
-        return this.password.hashCode();
+        return password.hashCode();
     }
 
     public String getUsername() {
-        return this.username;
+        return username;
     }
 
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
     public String getUserEmail() {
