@@ -1,5 +1,5 @@
 package backend;
-public abstract class Payment {
+public class Payment {
     private final String paymentId;
     private final String method;
     private double amount;
@@ -23,7 +23,9 @@ public abstract class Payment {
         return paymentId;
     }
 
-    public abstract String getMethod();
+    public String getMethod() {
+        return method;
+    }
 
     public void setAmount(double a) {
         this.amount = a;
